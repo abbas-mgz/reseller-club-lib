@@ -1,6 +1,6 @@
 {
   "name": "reseller-club-lib",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "A Node.js library for interacting with the Reseller Club API, enabling easy domain management and account operations.",
   "main": "dist/index.js",
   "scripts": {
@@ -17,6 +17,10 @@
   },
   "peerDependencies": {
     "axios": "^1.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:abbas-mgz/reseller-club-lib.git"
   },
   "license": "MIT",
   "keywords": [

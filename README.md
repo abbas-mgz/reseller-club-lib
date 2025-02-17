@@ -16,3 +16,43 @@ To install this library, you can use npm (Node Package Manager). In your project
 
 ```bash
 npm install domain-management-api
+
+## Usage Example
+
+Here is a sample usage of the library:
+
+const { buyDomain, checkDomainStatus, renewDomain, transferDomain, deleteDomain, listDomains } = require('my-domain-library');
+
+(async () => {
+  try {
+    // Purchase a domain
+    const purchaseResult = await buyDomain('example.com', {
+      name: 'John Doe',
+      email: 'john.doe@example.com',
+      address: '123 Main St'
+    });
+    console.log(purchaseResult);
+
+    // Check domain status
+    const domainStatus = await checkDomainStatus('example.com');
+    console.log(domainStatus);
+
+    // Renew domain
+    const renewResult = await renewDomain('example.com');
+    console.log(renewResult);
+
+    // Transfer domain
+    const transferResult = await transferDomain('example.com', 'auth-code-here');
+    console.log(transferResult);
+
+    // Delete domain
+    const deleteResult = await deleteDomain('example.com');
+    console.log(deleteResult);
+
+    // List all domains
+    const domains = await listDomains();
+    console.log(domains);
+  } catch (error) {
+    console.error(error.message);
+  }
+})();
