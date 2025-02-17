@@ -1,0 +1,30 @@
+{
+  "name": "reseller-club-lib",
+  "version": "1.0.1",
+  "description": "A Node.js library for interacting with the Reseller Club API, enabling easy domain management and account operations.",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "babel src --out-dir dist",
+    "test": "jest"
+  },
+  "dependencies": {
+    "axios": "^1.0.0",
+    "dotenv": "^16.0.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0"
+  },
+  "peerDependencies": {
+    "axios": "^1.0.0"
+  },
+  "license": "MIT",
+  "keywords": [
+    "resellerclub",
+    "api",
+    "domain",
+    "nodejs",
+    "library"
+  ],
+  "author": "Abbas Marghaei"
+}
