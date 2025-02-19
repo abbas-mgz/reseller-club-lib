@@ -177,7 +177,7 @@ var Domain = /*#__PURE__*/function () {
               nsParams = nameServers.map(function (ns, index) {
                 return "&ns=".concat(ns);
               }).join('');
-              url = "".concat(this.BASE_URL, "register.xml?auth-userid=").concat(this.userId, "&api-key=").concat(this.apiKey, "&domain-name=").concat(domainName, "&years=").concat(years).concat(nsParams, "&customer-id=").concat(customerId, "&reg-contact-id=").concat(regContactId, "&admin-contact-id=").concat(adminContactId, "&tech-contact-id=").concat(techContactId, "&billing-contact-id=").concat(billingContactId, "&invoice-option=").concat(invoiceOption);
+              url = "".concat(this.BASE_URL, "register.json?auth-userid=").concat(this.userId, "&api-key=").concat(this.apiKey, "&domain-name=").concat(domainName, "&years=").concat(years).concat(nsParams, "&customer-id=").concat(customerId, "&reg-contact-id=").concat(regContactId, "&admin-contact-id=").concat(adminContactId, "&tech-contact-id=").concat(techContactId, "&billing-contact-id=").concat(billingContactId, "&invoice-option=").concat(invoiceOption);
               _context5.prev = 3;
               _context5.next = 6;
               return axios.post(url);
@@ -217,7 +217,7 @@ var Domain = /*#__PURE__*/function () {
               nsParams = nameServers.map(function (ns) {
                 return "&ns=".concat(ns);
               }).join('');
-              url = "".concat(this.BASE_URL, "register.xml?auth-userid=").concat(this.userId, "&api-key=").concat(this.apiKey, "&domain-name=").concat(domainName, "&years=").concat(years).concat(nsParams, "&customer-id=").concat(customerId, "&reg-contact-id=").concat(regContactId, "&admin-contact-id=").concat(adminContactId, "&tech-contact-id=").concat(techContactId, "&billing-contact-id=").concat(billingContactId, "&invoice-option=").concat(invoiceOption, "&purchase-privacy=").concat(purchasePrivacy);
+              url = "".concat(this.BASE_URL, "register.json?auth-userid=").concat(this.userId, "&api-key=").concat(this.apiKey, "&domain-name=").concat(domainName, "&years=").concat(years).concat(nsParams, "&customer-id=").concat(customerId, "&reg-contact-id=").concat(regContactId, "&admin-contact-id=").concat(adminContactId, "&tech-contact-id=").concat(techContactId, "&billing-contact-id=").concat(billingContactId, "&invoice-option=").concat(invoiceOption, "&purchase-privacy=").concat(purchasePrivacy);
               _context6.prev = 4;
               _context6.next = 7;
               return axios.post(url);
@@ -264,7 +264,7 @@ var Domain = /*#__PURE__*/function () {
                   value = _ref2[1];
                 return "&attr-name".concat(index + 1, "=").concat(key, "&attr-value").concat(index + 1, "=").concat(encodeURIComponent(value));
               }).join('');
-              url = "".concat(this.BASE_URL, "register.xml?auth-userid=").concat(this.userId, "&api-key=").concat(this.apiKey, "&domain-name=").concat(domainName, "&years=").concat(years).concat(nsParams, "&customerid=").concat(customerId, "&reg-contact-id=").concat(regContactId, "&admin-contact-id=").concat(adminContactId, "&tech-contact-id=").concat(techContactId, "&billing-contact-id=").concat(billingContactId, "&invoice-option=").concat(invoiceOption).concat(attrParams);
+              url = "".concat(this.BASE_URL, "register.json?auth-userid=").concat(this.userId, "&api-key=").concat(this.apiKey, "&domain-name=").concat(domainName, "&years=").concat(years).concat(nsParams, "&customerid=").concat(customerId, "&reg-contact-id=").concat(regContactId, "&admin-contact-id=").concat(adminContactId, "&tech-contact-id=").concat(techContactId, "&billing-contact-id=").concat(billingContactId, "&invoice-option=").concat(invoiceOption).concat(attrParams);
               _context7.prev = 5;
               _context7.next = 8;
               return axios.post(url);
@@ -311,7 +311,7 @@ var Domain = /*#__PURE__*/function () {
                   value = _ref4[1];
                 return "&attr-name".concat(index + 1, "=").concat(key, "&attr-value").concat(index + 1, "=").concat(encodeURIComponent(value));
               }).join('');
-              url = "".concat(this.BASE_URL, "register.xml?auth-userid=").concat(this.userId, "&api-key=").concat(this.apiKey, "&domain-name=").concat(domainName, "&years=").concat(years).concat(nsParams, "&customer-id=").concat(customerId, "&reg-contact-id=").concat(regContactId, "&admin-contact-id=").concat(adminContactId, "&tech-contact-id=").concat(techContactId, "&billing-contact-id=").concat(billingContactId, "&invoice-option=").concat(invoiceOption).concat(attrParams);
+              url = "".concat(this.BASE_URL, "register.json?auth-userid=").concat(this.userId, "&api-key=").concat(this.apiKey, "&domain-name=").concat(domainName, "&years=").concat(years).concat(nsParams, "&customer-id=").concat(customerId, "&reg-contact-id=").concat(regContactId, "&admin-contact-id=").concat(adminContactId, "&tech-contact-id=").concat(techContactId, "&billing-contact-id=").concat(billingContactId, "&invoice-option=").concat(invoiceOption).concat(attrParams);
               _context8.prev = 5;
               _context8.next = 8;
               return axios.post(url);
@@ -358,7 +358,7 @@ var Domain = /*#__PURE__*/function () {
                   value = _ref6[1];
                 return "&attr-name".concat(index + 1, "=").concat(key, "&attr-value").concat(index + 1, "=").concat(encodeURIComponent(value));
               }).join('');
-              url = "".concat(this.BASE_URL, "register.xml?auth-userid=").concat(this.userId, "&api-key=").concat(this.apiKey, "&domain-name=").concat(domainName, "&years=").concat(years).concat(nsParams, "&customer-id=").concat(customerId, "&reg-contact-id=").concat(regContactId, "&admin-contact-id=").concat(adminContactId, "&tech-contact-id=").concat(techContactId, "&billing-contact-id=").concat(billingContactId, "&invoice-option=").concat(invoiceOption).concat(attrParams);
+              url = "".concat(this.BASE_URL, "register.json?auth-userid=").concat(this.userId, "&api-key=").concat(this.apiKey, "&domain-name=").concat(domainName, "&years=").concat(years).concat(nsParams, "&customer-id=").concat(customerId, "&reg-contact-id=").concat(regContactId, "&admin-contact-id=").concat(adminContactId, "&tech-contact-id=").concat(techContactId, "&billing-contact-id=").concat(billingContactId, "&invoice-option=").concat(invoiceOption).concat(attrParams);
               _context9.prev = 5;
               _context9.next = 8;
               return axios.post(url);
@@ -405,7 +405,7 @@ var Domain = /*#__PURE__*/function () {
                   value = _ref8[1];
                 return "&attr-name".concat(index + 1, "=").concat(key, "&attr-value").concat(index + 1, "=").concat(encodeURIComponent(value));
               }).join('');
-              url = "".concat(this.BASE_URL, "register.xml?auth-userid=").concat(this.userId, "&api-key=").concat(this.apiKey, "&domain-name=").concat(domainName, "&years=").concat(years).concat(nsParams, "&customer-id=").concat(customerId, "&reg-contact-id=").concat(regContactId, "&admin-contact-id=").concat(adminContactId, "&tech-contact-id=").concat(techContactId, "&billing-contact-id=").concat(billingContactId, "&invoice-option=").concat(invoiceOption).concat(attrParams);
+              url = "".concat(this.BASE_URL, "register.json?auth-userid=").concat(this.userId, "&api-key=").concat(this.apiKey, "&domain-name=").concat(domainName, "&years=").concat(years).concat(nsParams, "&customer-id=").concat(customerId, "&reg-contact-id=").concat(regContactId, "&admin-contact-id=").concat(adminContactId, "&tech-contact-id=").concat(techContactId, "&billing-contact-id=").concat(billingContactId, "&invoice-option=").concat(invoiceOption).concat(attrParams);
               _context10.prev = 5;
               _context10.next = 8;
               return axios.post(url);
@@ -443,7 +443,7 @@ var Domain = /*#__PURE__*/function () {
               nsParams = nameServers.map(function (ns) {
                 return "&ns=".concat(ns);
               }).join('');
-              url = "".concat(this.BASE_URL, "register.xml?auth-userid=").concat(this.userId, "&api-key=").concat(this.apiKey, "&domain-name=").concat(domainName, "&years=").concat(years).concat(nsParams, "&customer-id=").concat(customerId, "&reg-contact-id=").concat(regContactId, "&admin-contact-id=").concat(adminContactId, "&tech-contact-id=").concat(techContactId, "&billing-contact-id=").concat(billingContactId, "&invoice-option=").concat(invoiceOption, "&attr-name1=premium&attr-value1=true");
+              url = "".concat(this.BASE_URL, "register.json?auth-userid=").concat(this.userId, "&api-key=").concat(this.apiKey, "&domain-name=").concat(domainName, "&years=").concat(years).concat(nsParams, "&customer-id=").concat(customerId, "&reg-contact-id=").concat(regContactId, "&admin-contact-id=").concat(adminContactId, "&tech-contact-id=").concat(techContactId, "&billing-contact-id=").concat(billingContactId, "&invoice-option=").concat(invoiceOption, "&attr-name1=premium&attr-value1=true");
               _context11.prev = 3;
               _context11.next = 6;
               return axios.post(url);
@@ -481,7 +481,7 @@ var Domain = /*#__PURE__*/function () {
               nsParams = nameServers.map(function (ns) {
                 return "&ns=".concat(ns);
               }).join('');
-              url = "".concat(this.BASE_URL, "register.xml?auth-userid=").concat(this.userId, "&api-key=").concat(this.apiKey, "&domain-name=").concat(domainName, "&years=").concat(years).concat(nsParams, "&customer-id=").concat(customerId, "&reg-contact-id=").concat(regContactId, "&admin-contact-id=").concat(adminContactId, "&tech-contact-id=").concat(techContactId, "&billing-contact-id=").concat(billingContactId, "&invoice-option=").concat(invoiceOption, "&attr-name1=eap&attr-value1=true");
+              url = "".concat(this.BASE_URL, "register.json?auth-userid=").concat(this.userId, "&api-key=").concat(this.apiKey, "&domain-name=").concat(domainName, "&years=").concat(years).concat(nsParams, "&customer-id=").concat(customerId, "&reg-contact-id=").concat(regContactId, "&admin-contact-id=").concat(adminContactId, "&tech-contact-id=").concat(techContactId, "&billing-contact-id=").concat(billingContactId, "&invoice-option=").concat(invoiceOption, "&attr-name1=eap&attr-value1=true");
               _context12.prev = 3;
               _context12.next = 6;
               return axios.post(url);
@@ -519,7 +519,7 @@ var Domain = /*#__PURE__*/function () {
               nsParams = nameServers.map(function (ns) {
                 return "&ns=".concat(ns);
               }).join('');
-              url = "".concat(this.BASE_URL, "register.xml?auth-userid=").concat(this.userId, "&api-key=").concat(this.apiKey, "&domain-name=").concat(domainName, "&years=").concat(years).concat(nsParams, "&customer-id=").concat(customerId, "&reg-contact-id=").concat(regContactId, "&admin-contact-id=").concat(adminContactId, "&tech-contact-id=").concat(techContactId, "&billing-contact-id=").concat(billingContactId, "&invoice-option=").concat(invoiceOption, "&attr-name1=premium&attr-value1=true&attr-name2=eap&attr-value2=true");
+              url = "".concat(this.BASE_URL, "register.json?auth-userid=").concat(this.userId, "&api-key=").concat(this.apiKey, "&domain-name=").concat(domainName, "&years=").concat(years).concat(nsParams, "&customer-id=").concat(customerId, "&reg-contact-id=").concat(regContactId, "&admin-contact-id=").concat(adminContactId, "&tech-contact-id=").concat(techContactId, "&billing-contact-id=").concat(billingContactId, "&invoice-option=").concat(invoiceOption, "&attr-name1=premium&attr-value1=true&attr-name2=eap&attr-value2=true");
               _context13.prev = 3;
               _context13.next = 6;
               return axios.post(url);
@@ -1337,7 +1337,7 @@ var Domain = /*#__PURE__*/function () {
         return _regeneratorRuntime().wrap(function _callee39$(_context39) {
           while (1) switch (_context39.prev = _context39.next) {
             case 0:
-              url = "".concat(this.BASE_URL, "delete-cns-ip.xml?auth-userid=").concat(this.userId, "&api-key=").concat(this.apiKey, "&order-id=").concat(orderId, "&cns=").concat(cns, "&ip=").concat(ip);
+              url = "".concat(this.BASE_URL, "delete-cns-ip.json?auth-userid=").concat(this.userId, "&api-key=").concat(this.apiKey, "&order-id=").concat(orderId, "&cns=").concat(cns, "&ip=").concat(ip);
               _context39.prev = 1;
               _context39.next = 4;
               return axios.post(url);
@@ -1457,7 +1457,7 @@ var Domain = /*#__PURE__*/function () {
         return _regeneratorRuntime().wrap(function _callee43$(_context43) {
           while (1) switch (_context43.prev = _context43.next) {
             case 0:
-              url = "".concat(this.BASE_URL, "association-details.xml?auth-userid=").concat(this.userId, "&api-key=").concat(this.apiKey, "&order-id=").concat(orderId, "&association-id=").concat(associationId);
+              url = "".concat(this.BASE_URL, "association-details.json?auth-userid=").concat(this.userId, "&api-key=").concat(this.apiKey, "&order-id=").concat(orderId, "&association-id=").concat(associationId);
               _context43.prev = 1;
               _context43.next = 4;
               return axios.get(url);
@@ -1557,7 +1557,7 @@ var Domain = /*#__PURE__*/function () {
         return _regeneratorRuntime().wrap(function _callee46$(_context46) {
           while (1) switch (_context46.prev = _context46.next) {
             case 0:
-              url = "".concat(this.BASE_URL, "add-dnssec.xml?auth-userid=").concat(this.userId, "&api-key=").concat(this.apiKey, "&domain-name=").concat(domainName, "&options=OrderDetails");
+              url = "".concat(this.BASE_URL, "add-dnssec.json?auth-userid=").concat(this.userId, "&api-key=").concat(this.apiKey, "&domain-name=").concat(domainName, "&options=OrderDetails");
               _context46.prev = 1;
               _context46.next = 4;
               return axios.post(url);
@@ -1587,7 +1587,7 @@ var Domain = /*#__PURE__*/function () {
         return _regeneratorRuntime().wrap(function _callee47$(_context47) {
           while (1) switch (_context47.prev = _context47.next) {
             case 0:
-              url = "".concat(this.BASE_URL, "del-dnssec.xml?auth-userid=").concat(this.userId, "&api-key=").concat(this.apiKey, "&order-id=").concat(orderId, "&attr-name1=keytag&attr-value1=").concat(keytag, "&attr-name2=algorithm&attr-value2=").concat(algorithm, "&attr-name3=digesttype&attr-value3=").concat(digestType, "&attr-name4=digest&attr-value4=").concat(digest);
+              url = "".concat(this.BASE_URL, "del-dnssec.json?auth-userid=").concat(this.userId, "&api-key=").concat(this.apiKey, "&order-id=").concat(orderId, "&attr-name1=keytag&attr-value1=").concat(keytag, "&attr-name2=algorithm&attr-value2=").concat(algorithm, "&attr-name3=digesttype&attr-value3=").concat(digestType, "&attr-name4=digest&attr-value4=").concat(digest);
               _context47.prev = 1;
               _context47.next = 4;
               return axios.post(url);
@@ -1629,7 +1629,7 @@ var Domain = /*#__PURE__*/function () {
               tldsParam = tlds.map(function (tld) {
                 return "&tlds=".concat(tld);
               }).join('');
-              url = "https://domaincheck.httpapi.com/api/domains/premium/available.xml?auth-userid=".concat(this.userId, "&api-key=").concat(this.apiKey, "&key-word=").concat(encodeURIComponent(keyword)).concat(tldsParam, "&price-high=").concat(priceHigh, "&no-of-results=").concat(noOfResults);
+              url = "https://domaincheck.httpapi.com/api/domains/premium/available.json?auth-userid=".concat(this.userId, "&api-key=").concat(this.apiKey, "&key-word=").concat(encodeURIComponent(keyword)).concat(tldsParam, "&price-high=").concat(priceHigh, "&no-of-results=").concat(noOfResults);
               _context48.prev = 5;
               _context48.next = 8;
               return axios.get(url);
@@ -1659,7 +1659,7 @@ var Domain = /*#__PURE__*/function () {
         return _regeneratorRuntime().wrap(function _callee49$(_context49) {
           while (1) switch (_context49.prev = _context49.next) {
             case 0:
-              url = "".concat(this.BASE_URL, "preordering/add.xml?auth-userid=").concat(this.userId, "&api-key=").concat(this.apiKey, "&customerid=").concat(customerId, "&domain=").concat(encodeURIComponent(domain));
+              url = "".concat(this.BASE_URL, "preordering/add.json?auth-userid=").concat(this.userId, "&api-key=").concat(this.apiKey, "&customerid=").concat(customerId, "&domain=").concat(encodeURIComponent(domain));
               _context49.prev = 1;
               _context49.next = 4;
               return axios.post(url);
@@ -1689,7 +1689,7 @@ var Domain = /*#__PURE__*/function () {
         return _regeneratorRuntime().wrap(function _callee50$(_context50) {
           while (1) switch (_context50.prev = _context50.next) {
             case 0:
-              url = "".concat(this.BASE_URL, "preordering/delete.xml?auth-userid=").concat(this.userId, "&api-key=").concat(this.apiKey, "&customerid=").concat(customerId, "&domain=").concat(encodeURIComponent(domain));
+              url = "".concat(this.BASE_URL, "preordering/delete.json?auth-userid=").concat(this.userId, "&api-key=").concat(this.apiKey, "&customerid=").concat(customerId, "&domain=").concat(encodeURIComponent(domain));
               _context50.prev = 1;
               _context50.next = 4;
               return axios.post(url);
@@ -1725,7 +1725,7 @@ var Domain = /*#__PURE__*/function () {
             case 0:
               noOfRecords = _args51.length > 0 && _args51[0] !== undefined ? _args51[0] : 10;
               pageNo = _args51.length > 1 && _args51[1] !== undefined ? _args51[1] : 1;
-              url = "".concat(this.BASE_URL, "preordering/fetch.xml?auth-userid=").concat(this.userId, "&api-key=").concat(this.apiKey, "&no-of-records=").concat(noOfRecords, "&page-no=").concat(pageNo);
+              url = "".concat(this.BASE_URL, "preordering/fetch.json?auth-userid=").concat(this.userId, "&api-key=").concat(this.apiKey, "&no-of-records=").concat(noOfRecords, "&page-no=").concat(pageNo);
               _context51.prev = 3;
               _context51.next = 6;
               return axios.get(url);
@@ -1759,7 +1759,7 @@ var Domain = /*#__PURE__*/function () {
           while (1) switch (_context52.prev = _context52.next) {
             case 0:
               category = _args52.length > 0 && _args52[0] !== undefined ? _args52[0] : 'services';
-              url = "".concat(this.BASE_URL, "preordering/fetchtldlist.xml?auth-userid=").concat(this.userId, "&api-key=").concat(this.apiKey, "&category=").concat(category);
+              url = "".concat(this.BASE_URL, "preordering/fetchtldlist.json?auth-userid=").concat(this.userId, "&api-key=").concat(this.apiKey, "&category=").concat(category);
               _context52.prev = 2;
               _context52.next = 5;
               return axios.get(url);
@@ -1793,7 +1793,7 @@ var Domain = /*#__PURE__*/function () {
           while (1) switch (_context53.prev = _context53.next) {
             case 0:
               smd = _args53.length > 2 && _args53[2] !== undefined ? _args53[2] : '';
-              url = "https://domaincheck.httpapi.com/api/domains/available-sunrise.xml?auth-userid=".concat(this.userId, "&api-key=").concat(this.apiKey, "&domainname=").concat(domainName, "&tld=").concat(tld, "&smd=").concat(smd);
+              url = "https://domaincheck.httpapi.com/api/domains/available-sunrise.json?auth-userid=".concat(this.userId, "&api-key=").concat(this.apiKey, "&domainname=").concat(domainName, "&tld=").concat(tld, "&smd=").concat(smd);
               _context53.prev = 2;
               _context53.next = 5;
               return axios.get(url);
@@ -1823,7 +1823,7 @@ var Domain = /*#__PURE__*/function () {
         return _regeneratorRuntime().wrap(function _callee54$(_context54) {
           while (1) switch (_context54.prev = _context54.next) {
             case 0:
-              url = "".concat(this.BASE_URL, "get-tm-notice.xml?auth-userid=").concat(this.userId, "&api-key=").concat(this.apiKey, "&lookup-key=").concat(lookupKey);
+              url = "".concat(this.BASE_URL, "get-tm-notice.json?auth-userid=").concat(this.userId, "&api-key=").concat(this.apiKey, "&lookup-key=").concat(lookupKey);
               _context54.prev = 1;
               _context54.next = 4;
               return axios.get(url);
@@ -1853,7 +1853,7 @@ var Domain = /*#__PURE__*/function () {
         return _regeneratorRuntime().wrap(function _callee55$(_context55) {
           while (1) switch (_context55.prev = _context55.next) {
             case 0:
-              url = "".concat(this.BASE_URL, "tlds-in-phase.xml?auth-userid=").concat(this.userId, "&api-key=").concat(this.apiKey, "&phase=").concat(phase);
+              url = "".concat(this.BASE_URL, "tlds-in-phase.json?auth-userid=").concat(this.userId, "&api-key=").concat(this.apiKey, "&phase=").concat(phase);
               _context55.prev = 1;
               _context55.next = 4;
               return axios.get(url);
@@ -1917,7 +1917,7 @@ var Domain = /*#__PURE__*/function () {
         return _regeneratorRuntime().wrap(function _callee57$(_context57) {
           while (1) switch (_context57.prev = _context57.next) {
             case 0:
-              url = "https://domaincheck.httpapi.com/api/domains/uk/available.xml?auth-userid=".concat(this.userId, "&api-key=").concat(this.apiKey, "&domain-name=").concat(encodeURIComponent(domainName), "&name=").concat(encodeURIComponent(name), "&company=").concat(encodeURIComponent(company), "&email=").concat(encodeURIComponent(email), "&address-line-1=").concat(encodeURIComponent(address), "&city=").concat(encodeURIComponent(city), "&state=").concat(encodeURIComponent(state), "&country=").concat(encodeURIComponent(country), "&zipcode=").concat(encodeURIComponent(zipcode));
+              url = "https://domaincheck.httpapi.com/api/domains/uk/available.json?auth-userid=".concat(this.userId, "&api-key=").concat(this.apiKey, "&domain-name=").concat(encodeURIComponent(domainName), "&name=").concat(encodeURIComponent(name), "&company=").concat(encodeURIComponent(company), "&email=").concat(encodeURIComponent(email), "&address-line-1=").concat(encodeURIComponent(address), "&city=").concat(encodeURIComponent(city), "&state=").concat(encodeURIComponent(state), "&country=").concat(encodeURIComponent(country), "&zipcode=").concat(encodeURIComponent(zipcode));
               _context57.prev = 1;
               _context57.next = 4;
               return axios.get(url);
@@ -1947,7 +1947,7 @@ var Domain = /*#__PURE__*/function () {
         return _regeneratorRuntime().wrap(function _callee58$(_context58) {
           while (1) switch (_context58.prev = _context58.next) {
             case 0:
-              url = "".concat(this.BASE_URL, "transfer/submit-auth-code.xml?auth-userid=").concat(this.userId, "&api-key=").concat(this.apiKey, "&order-id=").concat(orderId, "&auth-code=").concat(encodeURIComponent(authCode));
+              url = "".concat(this.BASE_URL, "transfer/submit-auth-code.json?auth-userid=").concat(this.userId, "&api-key=").concat(this.apiKey, "&order-id=").concat(orderId, "&auth-code=").concat(encodeURIComponent(authCode));
               _context58.prev = 1;
               _context58.next = 4;
               return axios.post(url);

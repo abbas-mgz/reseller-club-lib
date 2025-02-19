@@ -1,47 +1,74 @@
-<script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="abbasmarghaei" data-color="#FF5F5F" data-emoji="☕"  data-font="Cookie" data-text="Buy me a coffee" data-outline-color="#000000" data-font-color="#ffffff" data-coffee-color="#FFDD00" ></script>
+# ResellerClub API Integration
 
-# Domain Management API Library
+This project provides an integration with the ResellerClub API, allowing users to manage domains and customers easily.
 
-This is a Node.js library that interacts with the ResellerClub API to manage domains. It allows you to perform domain-related actions such as purchasing, checking availability, renewing, transferring, and retrieving domain information.
+## Configuration
 
-## Features
+Before using the API, configure it with your credentials:
 
-- **Purchase a Domain**: Easily purchase a new domain.
-- **Check Domain Availability**: Check if a domain is available for registration.
-- **Get Domain Info**: Retrieve detailed information about a domain.
-- **Renew a Domain**: Renew a domain for a specified number of years.
-- **Transfer a Domain**: Transfer a domain to another registrar.
+```javascript
+resellerClub.setConfig({
+    apiKey: 'mKEOHY9TXV0fwgxoCb46yLUjPa7KsO1n',
+    userId: '1276883',
+    baseUrl: 'https://test.httpapi.com/api' // Ensure it's correctly set
+});
+```
 
-## Installation
+## Domain Management
 
-To install this library, you can use npm (Node Package Manager). In your project directory, run the following command:
+To register a new domain, use the `Domain` class with the following parameters:
 
-```bash
-npm install domain-management-api
-
-## Usage Example
-
-Here is a sample usage of the library:
-
-const ResellerClub = require('reseller-club-lib');
-
-const reseller = new ResellerClub(process.env.API_KEY_RESELLER_CLUB, process.env.AUTH_USER_ID);
-
-const customerInfo = {
-  username: 'email@email.com',
-  passwd: 'password9',
-  name: 'name',
-  company: 'company',
-  addressLine1: 'address-line-1',
-  city: 'city',
-  state: 'state',
-  country: 'US',
-  zipcode: '0000',
-  phoneCC: '0',
-  phone: '000000',
-  langPref: 'en'
+```javascript
+const domainInstance = new resellerClub.Domain();
+const domainData = {
+    domainName: 'domain.com',
+    years: 1,
+    ns: ['ns1.domain.com', 'ns2.domain.com'],
+    customerId: 0,
+    regContactId: 0,
+    adminContactId: 0,
+    techContactId: 0,
+    billingContactId: 0,
+    invoiceOption: 'KeepInvoice'
 };
 
-reseller.signup(customerInfo)
-  .then(data => console.log(data))
-  .catch(err => console.error('Error: ', err));
+const newDomain = await domainInstance.registerDomain(domainData);
+```
+
+## Customer Management
+
+To create a new customer, use the following example:
+
+```javascript
+const customerInstance = new resellerClub.Customer();
+const customerData = {
+    username: 'john.doe123@example.com',
+    passwd: 'SecurePass123',
+    name: 'John Doe',
+    company: 'Example Ltd',
+    addressLine1: '123 Example Street',
+    city: 'New York',
+    state: 'NY',
+    zipcode: '10001',
+    country: 'US',
+    phoneCC: 1,
+    phone: '1234567890',
+    langPref: 'en'
+};
+
+// Ensure `signupCustomer` is the correct function name
+const newCustomer = await customerInstance.signupCustomer(customerData);
+```
+
+## API Documentation
+
+For sending data and making API requests, please refer to the official ResellerClub API documentation.
+
+## Support
+
+If you find this project useful and would like to support my work, you can do so via the link below:
+
+<a href="https://www.buymeacoffee.com/abbasmarghaei" target="_blank">
+    <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 100px !important;" >
+</a>
+

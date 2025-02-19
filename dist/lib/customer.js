@@ -19,7 +19,7 @@ var Customer = /*#__PURE__*/function () {
       throw new Error('API Key and User ID are required.');
     }
     if (global.resellerGlobalConfig.baseUrl.endsWith('/')) global.resellerGlobalConfig.baseUrl = global.resellerGlobalConfig.baseUrl.substring(0, global.resellerGlobalConfig.baseUrl.length - 1);
-    this.BASE_URL = global.resellerGlobalConfig.baseUrl + '/domains/';
+    this.BASE_URL = global.resellerGlobalConfig.baseUrl + '/customers/';
   }
   return _createClass(Customer, [{
     key: "signupCustomer",
@@ -30,7 +30,7 @@ var Customer = /*#__PURE__*/function () {
           while (1) switch (_context.prev = _context.next) {
             case 0:
               username = customerInfo.username, passwd = customerInfo.passwd, name = customerInfo.name, company = customerInfo.company, addressLine1 = customerInfo.addressLine1, city = customerInfo.city, state = customerInfo.state, country = customerInfo.country, zipcode = customerInfo.zipcode, phoneCC = customerInfo.phoneCC, phone = customerInfo.phone, langPref = customerInfo.langPref;
-              url = "".concat(this.BASE_URL, "signup.xml?auth-userid=").concat(this.userId, "&api-key=").concat(this.apiKey, "&username=").concat(username, "&passwd=").concat(passwd, "&name=").concat(name, "&company=").concat(company, "&address-line-1=").concat(addressLine1, "&city=").concat(city, "&state=").concat(state, "&country=").concat(country, "&zipcode=").concat(zipcode, "&phone-cc=").concat(phoneCC, "&phone=").concat(phone, "&lang-pref=").concat(langPref);
+              url = "".concat(this.BASE_URL, "signup.json?auth-userid=").concat(this.userId, "&api-key=").concat(this.apiKey, "&username=").concat(username, "&passwd=").concat(passwd, "&name=").concat(name, "&company=").concat(company, "&address-line-1=").concat(addressLine1, "&city=").concat(city, "&state=").concat(state, "&country=").concat(country, "&zipcode=").concat(zipcode, "&phone-cc=").concat(phoneCC, "&phone=").concat(phone, "&lang-pref=").concat(langPref);
               _context.prev = 2;
               _context.next = 5;
               return axios.post(url);
@@ -337,7 +337,7 @@ var Customer = /*#__PURE__*/function () {
         return _regeneratorRuntime().wrap(function _callee11$(_context11) {
           while (1) switch (_context11.prev = _context11.next) {
             case 0:
-              url = "".concat(this.BASE_URL, "forgot-password.xml?auth-userid=").concat(this.userId, "&api-key=").concat(this.apiKey, "&username=").concat(username);
+              url = "".concat(this.BASE_URL, "forgot-password.json?auth-userid=").concat(this.userId, "&api-key=").concat(this.apiKey, "&username=").concat(username);
               _context11.prev = 1;
               _context11.next = 4;
               return axios.post(url);

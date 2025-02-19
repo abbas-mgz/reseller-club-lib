@@ -54,7 +54,7 @@ class Domain {
   }
   async registerDomain(domainName, years, nameServers, customerId, regContactId, adminContactId, techContactId, billingContactId, invoiceOption = 'KeepInvoice') {
     const nsParams = nameServers.map((ns, index) => `&ns=${ns}`).join('');
-    const url = `${this.BASE_URL}register.xml?auth-userid=${this.userId}&api-key=${this.apiKey}&domain-name=${domainName}&years=${years}${nsParams}&customer-id=${customerId}&reg-contact-id=${regContactId}&admin-contact-id=${adminContactId}&tech-contact-id=${techContactId}&billing-contact-id=${billingContactId}&invoice-option=${invoiceOption}`;
+    const url = `${this.BASE_URL}register.json?auth-userid=${this.userId}&api-key=${this.apiKey}&domain-name=${domainName}&years=${years}${nsParams}&customer-id=${customerId}&reg-contact-id=${regContactId}&admin-contact-id=${adminContactId}&tech-contact-id=${techContactId}&billing-contact-id=${billingContactId}&invoice-option=${invoiceOption}`;
 
     try {
       const response = await axios.post(url);
@@ -65,7 +65,7 @@ class Domain {
   }
   async registerDomainWithPrivacy(domainName, years, nameServers, customerId, regContactId, adminContactId, techContactId, billingContactId, invoiceOption = 'KeepInvoice', purchasePrivacy = true) {
     const nsParams = nameServers.map(ns => `&ns=${ns}`).join('');
-    const url = `${this.BASE_URL}register.xml?auth-userid=${this.userId}&api-key=${this.apiKey}&domain-name=${domainName}&years=${years}${nsParams}&customer-id=${customerId}&reg-contact-id=${regContactId}&admin-contact-id=${adminContactId}&tech-contact-id=${techContactId}&billing-contact-id=${billingContactId}&invoice-option=${invoiceOption}&purchase-privacy=${purchasePrivacy}`;
+    const url = `${this.BASE_URL}register.json?auth-userid=${this.userId}&api-key=${this.apiKey}&domain-name=${domainName}&years=${years}${nsParams}&customer-id=${customerId}&reg-contact-id=${regContactId}&admin-contact-id=${adminContactId}&tech-contact-id=${techContactId}&billing-contact-id=${billingContactId}&invoice-option=${invoiceOption}&purchase-privacy=${purchasePrivacy}`;
 
     try {
       const response = await axios.post(url);
@@ -80,7 +80,7 @@ class Domain {
       .map(([key, value], index) => `&attr-name${index + 1}=${key}&attr-value${index + 1}=${encodeURIComponent(value)}`)
       .join('');
 
-    const url = `${this.BASE_URL}register.xml?auth-userid=${this.userId}&api-key=${this.apiKey}&domain-name=${domainName}&years=${years}${nsParams}&customerid=${customerId}&reg-contact-id=${regContactId}&admin-contact-id=${adminContactId}&tech-contact-id=${techContactId}&billing-contact-id=${billingContactId}&invoice-option=${invoiceOption}${attrParams}`;
+    const url = `${this.BASE_URL}register.json?auth-userid=${this.userId}&api-key=${this.apiKey}&domain-name=${domainName}&years=${years}${nsParams}&customerid=${customerId}&reg-contact-id=${regContactId}&admin-contact-id=${adminContactId}&tech-contact-id=${techContactId}&billing-contact-id=${billingContactId}&invoice-option=${invoiceOption}${attrParams}`;
 
     try {
       const response = await axios.post(url);
@@ -95,7 +95,7 @@ class Domain {
       .map(([key, value], index) => `&attr-name${index + 1}=${key}&attr-value${index + 1}=${encodeURIComponent(value)}`)
       .join('');
 
-    const url = `${this.BASE_URL}register.xml?auth-userid=${this.userId}&api-key=${this.apiKey}&domain-name=${domainName}&years=${years}${nsParams}&customer-id=${customerId}&reg-contact-id=${regContactId}&admin-contact-id=${adminContactId}&tech-contact-id=${techContactId}&billing-contact-id=${billingContactId}&invoice-option=${invoiceOption}${attrParams}`;
+    const url = `${this.BASE_URL}register.json?auth-userid=${this.userId}&api-key=${this.apiKey}&domain-name=${domainName}&years=${years}${nsParams}&customer-id=${customerId}&reg-contact-id=${regContactId}&admin-contact-id=${adminContactId}&tech-contact-id=${techContactId}&billing-contact-id=${billingContactId}&invoice-option=${invoiceOption}${attrParams}`;
 
     try {
       const response = await axios.post(url);
@@ -110,7 +110,7 @@ class Domain {
       .map(([key, value], index) => `&attr-name${index + 1}=${key}&attr-value${index + 1}=${encodeURIComponent(value)}`)
       .join('');
 
-    const url = `${this.BASE_URL}register.xml?auth-userid=${this.userId}&api-key=${this.apiKey}&domain-name=${domainName}&years=${years}${nsParams}&customer-id=${customerId}&reg-contact-id=${regContactId}&admin-contact-id=${adminContactId}&tech-contact-id=${techContactId}&billing-contact-id=${billingContactId}&invoice-option=${invoiceOption}${attrParams}`;
+    const url = `${this.BASE_URL}register.json?auth-userid=${this.userId}&api-key=${this.apiKey}&domain-name=${domainName}&years=${years}${nsParams}&customer-id=${customerId}&reg-contact-id=${regContactId}&admin-contact-id=${adminContactId}&tech-contact-id=${techContactId}&billing-contact-id=${billingContactId}&invoice-option=${invoiceOption}${attrParams}`;
 
     try {
       const response = await axios.post(url);
@@ -126,7 +126,7 @@ class Domain {
       .map(([key, value], index) => `&attr-name${index + 1}=${key}&attr-value${index + 1}=${encodeURIComponent(value)}`)
       .join('');
 
-    const url = `${this.BASE_URL}register.xml?auth-userid=${this.userId}&api-key=${this.apiKey}&domain-name=${domainName}&years=${years}${nsParams}&customer-id=${customerId}&reg-contact-id=${regContactId}&admin-contact-id=${adminContactId}&tech-contact-id=${techContactId}&billing-contact-id=${billingContactId}&invoice-option=${invoiceOption}${attrParams}`;
+    const url = `${this.BASE_URL}register.json?auth-userid=${this.userId}&api-key=${this.apiKey}&domain-name=${domainName}&years=${years}${nsParams}&customer-id=${customerId}&reg-contact-id=${regContactId}&admin-contact-id=${adminContactId}&tech-contact-id=${techContactId}&billing-contact-id=${billingContactId}&invoice-option=${invoiceOption}${attrParams}`;
 
     try {
       const response = await axios.post(url);
@@ -137,7 +137,7 @@ class Domain {
   }
   async registerPremiumDomain(domainName, years, nameServers, customerId, regContactId, adminContactId, techContactId, billingContactId, invoiceOption = 'KeepInvoice') {
     const nsParams = nameServers.map(ns => `&ns=${ns}`).join('');
-    const url = `${this.BASE_URL}register.xml?auth-userid=${this.userId}&api-key=${this.apiKey}&domain-name=${domainName}&years=${years}${nsParams}&customer-id=${customerId}&reg-contact-id=${regContactId}&admin-contact-id=${adminContactId}&tech-contact-id=${techContactId}&billing-contact-id=${billingContactId}&invoice-option=${invoiceOption}&attr-name1=premium&attr-value1=true`;
+    const url = `${this.BASE_URL}register.json?auth-userid=${this.userId}&api-key=${this.apiKey}&domain-name=${domainName}&years=${years}${nsParams}&customer-id=${customerId}&reg-contact-id=${regContactId}&admin-contact-id=${adminContactId}&tech-contact-id=${techContactId}&billing-contact-id=${billingContactId}&invoice-option=${invoiceOption}&attr-name1=premium&attr-value1=true`;
 
     try {
       const response = await axios.post(url);
@@ -148,7 +148,7 @@ class Domain {
   }
   async registerDomainInEAP(domainName, years, nameServers, customerId, regContactId, adminContactId, techContactId, billingContactId, invoiceOption = 'KeepInvoice') {
     const nsParams = nameServers.map(ns => `&ns=${ns}`).join('');
-    const url = `${this.BASE_URL}register.xml?auth-userid=${this.userId}&api-key=${this.apiKey}&domain-name=${domainName}&years=${years}${nsParams}&customer-id=${customerId}&reg-contact-id=${regContactId}&admin-contact-id=${adminContactId}&tech-contact-id=${techContactId}&billing-contact-id=${billingContactId}&invoice-option=${invoiceOption}&attr-name1=eap&attr-value1=true`;
+    const url = `${this.BASE_URL}register.json?auth-userid=${this.userId}&api-key=${this.apiKey}&domain-name=${domainName}&years=${years}${nsParams}&customer-id=${customerId}&reg-contact-id=${regContactId}&admin-contact-id=${adminContactId}&tech-contact-id=${techContactId}&billing-contact-id=${billingContactId}&invoice-option=${invoiceOption}&attr-name1=eap&attr-value1=true`;
 
     try {
       const response = await axios.post(url);
@@ -159,7 +159,7 @@ class Domain {
   }
   async registerPremiumDomainInEAP(domainName, years, nameServers, customerId, regContactId, adminContactId, techContactId, billingContactId, invoiceOption = 'KeepInvoice') {
     const nsParams = nameServers.map(ns => `&ns=${ns}`).join('');
-    const url = `${this.BASE_URL}register.xml?auth-userid=${this.userId}&api-key=${this.apiKey}&domain-name=${domainName}&years=${years}${nsParams}&customer-id=${customerId}&reg-contact-id=${regContactId}&admin-contact-id=${adminContactId}&tech-contact-id=${techContactId}&billing-contact-id=${billingContactId}&invoice-option=${invoiceOption}&attr-name1=premium&attr-value1=true&attr-name2=eap&attr-value2=true`;
+    const url = `${this.BASE_URL}register.json?auth-userid=${this.userId}&api-key=${this.apiKey}&domain-name=${domainName}&years=${years}${nsParams}&customer-id=${customerId}&reg-contact-id=${regContactId}&admin-contact-id=${adminContactId}&tech-contact-id=${techContactId}&billing-contact-id=${billingContactId}&invoice-option=${invoiceOption}&attr-name1=premium&attr-value1=true&attr-name2=eap&attr-value2=true`;
 
     try {
       const response = await axios.post(url);
@@ -438,7 +438,7 @@ class Domain {
   }
   // Delete CNS IP for a specific domain
   async deleteCnsIp(orderId, cns, ip) {
-    const url = `${this.BASE_URL}delete-cns-ip.xml?auth-userid=${this.userId}&api-key=${this.apiKey}&order-id=${orderId}&cns=${cns}&ip=${ip}`;
+    const url = `${this.BASE_URL}delete-cns-ip.json?auth-userid=${this.userId}&api-key=${this.apiKey}&order-id=${orderId}&cns=${cns}&ip=${ip}`;
 
     try {
       const response = await axios.post(url);
@@ -482,7 +482,7 @@ class Domain {
   }
   // Fetch association details for a domain
   async getAssociationDetails(orderId, associationId) {
-    const url = `${this.BASE_URL}association-details.xml?auth-userid=${this.userId}&api-key=${this.apiKey}&order-id=${orderId}&association-id=${associationId}`;
+    const url = `${this.BASE_URL}association-details.json?auth-userid=${this.userId}&api-key=${this.apiKey}&order-id=${orderId}&association-id=${associationId}`;
 
     try {
       const response = await axios.get(url);
@@ -515,7 +515,7 @@ class Domain {
     }
   }
   async addDsRc(domainName) {
-    const url = `${this.BASE_URL}add-dnssec.xml?auth-userid=${this.userId}&api-key=${this.apiKey}&domain-name=${domainName}&options=OrderDetails`;
+    const url = `${this.BASE_URL}add-dnssec.json?auth-userid=${this.userId}&api-key=${this.apiKey}&domain-name=${domainName}&options=OrderDetails`;
 
     try {
       const response = await axios.post(url);
@@ -526,7 +526,7 @@ class Domain {
   }
   // Delete DNSSEC from a domain
   async deleteDnssec(orderId, keytag, algorithm, digestType, digest) {
-    const url = `${this.BASE_URL}del-dnssec.xml?auth-userid=${this.userId}&api-key=${this.apiKey}&order-id=${orderId}&attr-name1=keytag&attr-value1=${keytag}&attr-name2=algorithm&attr-value2=${algorithm}&attr-name3=digesttype&attr-value3=${digestType}&attr-name4=digest&attr-value4=${digest}`;
+    const url = `${this.BASE_URL}del-dnssec.json?auth-userid=${this.userId}&api-key=${this.apiKey}&order-id=${orderId}&attr-name1=keytag&attr-value1=${keytag}&attr-name2=algorithm&attr-value2=${algorithm}&attr-name3=digesttype&attr-value3=${digestType}&attr-name4=digest&attr-value4=${digest}`;
 
     try {
       const response = await axios.post(url);
@@ -538,7 +538,7 @@ class Domain {
   // Check premium domain availability
   async checkPremiumDomains(keyword, tlds = ['com', 'net', 'org'], priceHigh = 10000, noOfResults = 10) {
     const tldsParam = tlds.map(tld => `&tlds=${tld}`).join('');
-    const url = `https://domaincheck.httpapi.com/api/domains/premium/available.xml?auth-userid=${this.userId}&api-key=${this.apiKey}&key-word=${encodeURIComponent(keyword)}${tldsParam}&price-high=${priceHigh}&no-of-results=${noOfResults}`;
+    const url = `https://domaincheck.httpapi.com/api/domains/premium/available.json?auth-userid=${this.userId}&api-key=${this.apiKey}&key-word=${encodeURIComponent(keyword)}${tldsParam}&price-high=${priceHigh}&no-of-results=${noOfResults}`;
 
     try {
       const response = await axios.get(url);
@@ -549,7 +549,7 @@ class Domain {
   }
   // Preorder a domain
   async preOrderDomain(customerId, domain) {
-    const url = `${this.BASE_URL}preordering/add.xml?auth-userid=${this.userId}&api-key=${this.apiKey}&customerid=${customerId}&domain=${encodeURIComponent(domain)}`;
+    const url = `${this.BASE_URL}preordering/add.json?auth-userid=${this.userId}&api-key=${this.apiKey}&customerid=${customerId}&domain=${encodeURIComponent(domain)}`;
 
     try {
       const response = await axios.post(url);
@@ -560,7 +560,7 @@ class Domain {
   }
   // Delete a preordered domain
   async deletePreorderedDomain(customerId, domain) {
-    const url = `${this.BASE_URL}preordering/delete.xml?auth-userid=${this.userId}&api-key=${this.apiKey}&customerid=${customerId}&domain=${encodeURIComponent(domain)}`;
+    const url = `${this.BASE_URL}preordering/delete.json?auth-userid=${this.userId}&api-key=${this.apiKey}&customerid=${customerId}&domain=${encodeURIComponent(domain)}`;
 
     try {
       const response = await axios.post(url);
@@ -571,7 +571,7 @@ class Domain {
   }
   // Fetch preordered domains
   async fetchPreorderedDomains(noOfRecords = 10, pageNo = 1) {
-    const url = `${this.BASE_URL}preordering/fetch.xml?auth-userid=${this.userId}&api-key=${this.apiKey}&no-of-records=${noOfRecords}&page-no=${pageNo}`;
+    const url = `${this.BASE_URL}preordering/fetch.json?auth-userid=${this.userId}&api-key=${this.apiKey}&no-of-records=${noOfRecords}&page-no=${pageNo}`;
 
     try {
       const response = await axios.get(url);
@@ -582,7 +582,7 @@ class Domain {
   }
   // Fetch available TLD list for preordering
   async fetchTLDList(category = 'services') {
-    const url = `${this.BASE_URL}preordering/fetchtldlist.xml?auth-userid=${this.userId}&api-key=${this.apiKey}&category=${category}`;
+    const url = `${this.BASE_URL}preordering/fetchtldlist.json?auth-userid=${this.userId}&api-key=${this.apiKey}&category=${category}`;
 
     try {
       const response = await axios.get(url);
@@ -593,7 +593,7 @@ class Domain {
   }
   // Check domain availability during the sunrise period
   async checkSunriseAvailability(domainName, tld, smd = '') {
-    const url = `https://domaincheck.httpapi.com/api/domains/available-sunrise.xml?auth-userid=${this.userId}&api-key=${this.apiKey}&domainname=${domainName}&tld=${tld}&smd=${smd}`;
+    const url = `https://domaincheck.httpapi.com/api/domains/available-sunrise.json?auth-userid=${this.userId}&api-key=${this.apiKey}&domainname=${domainName}&tld=${tld}&smd=${smd}`;
 
     try {
       const response = await axios.get(url);
@@ -604,7 +604,7 @@ class Domain {
   }
   // Fetch Trademark Notice for a given lookup key
   async getTrademarkNotice(lookupKey) {
-    const url = `${this.BASE_URL}get-tm-notice.xml?auth-userid=${this.userId}&api-key=${this.apiKey}&lookup-key=${lookupKey}`;
+    const url = `${this.BASE_URL}get-tm-notice.json?auth-userid=${this.userId}&api-key=${this.apiKey}&lookup-key=${lookupKey}`;
 
     try {
       const response = await axios.get(url);
@@ -615,7 +615,7 @@ class Domain {
   }
   // Fetch TLDs that are in a specific phase (e.g., "sunrise")
   async getTLDsInPhase(phase) {
-    const url = `${this.BASE_URL}tlds-in-phase.xml?auth-userid=${this.userId}&api-key=${this.apiKey}&phase=${phase}`;
+    const url = `${this.BASE_URL}tlds-in-phase.json?auth-userid=${this.userId}&api-key=${this.apiKey}&phase=${phase}`;
 
     try {
       const response = await axios.get(url);
@@ -637,7 +637,7 @@ class Domain {
   }
   // Check if a UK domain is available
   async checkDomainAvailabilityUK(domainName, name, company, email, address, city, state, country, zipcode) {
-    const url = `https://domaincheck.httpapi.com/api/domains/uk/available.xml?auth-userid=${this.userId}&api-key=${this.apiKey}&domain-name=${encodeURIComponent(domainName)}&name=${encodeURIComponent(name)}&company=${encodeURIComponent(company)}&email=${encodeURIComponent(email)}&address-line-1=${encodeURIComponent(address)}&city=${encodeURIComponent(city)}&state=${encodeURIComponent(state)}&country=${encodeURIComponent(country)}&zipcode=${encodeURIComponent(zipcode)}`;
+    const url = `https://domaincheck.httpapi.com/api/domains/uk/available.json?auth-userid=${this.userId}&api-key=${this.apiKey}&domain-name=${encodeURIComponent(domainName)}&name=${encodeURIComponent(name)}&company=${encodeURIComponent(company)}&email=${encodeURIComponent(email)}&address-line-1=${encodeURIComponent(address)}&city=${encodeURIComponent(city)}&state=${encodeURIComponent(state)}&country=${encodeURIComponent(country)}&zipcode=${encodeURIComponent(zipcode)}`;
 
     try {
       const response = await axios.get(url);
@@ -648,7 +648,7 @@ class Domain {
   }
   // Submit the domain transfer authorization code
   async submitAuthCode(orderId, authCode) {
-    const url = `${this.BASE_URL}transfer/submit-auth-code.xml?auth-userid=${this.userId}&api-key=${this.apiKey}&order-id=${orderId}&auth-code=${encodeURIComponent(authCode)}`;
+    const url = `${this.BASE_URL}transfer/submit-auth-code.json?auth-userid=${this.userId}&api-key=${this.apiKey}&order-id=${orderId}&auth-code=${encodeURIComponent(authCode)}`;
 
     try {
       const response = await axios.post(url);
