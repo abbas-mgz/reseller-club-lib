@@ -21,7 +21,7 @@ npm install domain-management-api
 
 Here is a sample usage of the library:
 
-const { buyDomain, checkDomainStatus, renewDomain, transferDomain, deleteDomain, listDomains } = require('my-domain-library');
+const { buyDomain, checkDomainStatus, renewDomain, transferDomain, deleteDomain, listDomains } = require('reseller-club-lib');
 
 (async () => {
   try {
