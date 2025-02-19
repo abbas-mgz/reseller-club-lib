@@ -1,22 +1,24 @@
 const axios = require('axios');
 
 class Customer {
-  constructor(apiKey, userId) {
-    this.apiKey = apiKey || process.env.API_KEY_RESELLER_CLUB;
-    this.userId = userId || process.env.AUTH_USER_ID;
+  constructor() {
+    this.apiKey = global.resellerGlobalConfig.apiKey;
+    this.userId = global.resellerGlobalConfig.userId;
     if (!this.apiKey || !this.userId) {
       throw new Error('API Key and User ID are required.');
     }
-    this.BASE_URL = 'https://test.httpapi.com/api';
+    if (global.resellerGlobalConfig.baseUrl.endsWith('/'))
+      global.resellerGlobalConfig.baseUrl = global.resellerGlobalConfig.baseUrl.substring(0, global.resellerGlobalConfig.baseUrl.length - 1);
+    this.BASE_URL = global.resellerGlobalConfig.baseUrl + '/domains/';
   }
 
   async signupCustomer(customerInfo) {
     const { username, passwd, name, company, addressLine1, city, state, country, zipcode, phoneCC, phone, langPref } = customerInfo;
 
-    const url = `${this.BASE_URL}/customers/signup.xml?auth-userid=${this.userId}&api-key=${this.apiKey}&username=${username}&passwd=${passwd}&name=${name}&company=${company}&address-line-1=${addressLine1}&city=${city}&state=${state}&country=${country}&zipcode=${zipcode}&phone-cc=${phoneCC}&phone=${phone}&lang-pref=${langPref}`;
+    const url = `${this.BASE_URL}signup.xml?auth-userid=${this.userId}&api-key=${this.apiKey}&username=${username}&passwd=${passwd}&name=${name}&company=${company}&address-line-1=${addressLine1}&city=${city}&state=${state}&country=${country}&zipcode=${zipcode}&phone-cc=${phoneCC}&phone=${phone}&lang-pref=${langPref}`;
 
     try {
-      const response = await axios.get(url);
+      const response = await axios.post(url);
       return response.data;
     } catch (error) {
       throw new Error('Error during signup: ' + error.message);
@@ -25,10 +27,10 @@ class Customer {
   async modifyCustomer(customerInfo) {
     const { customerId, username, name, company, langPref, addressLine1, city, state, country, zipcode, phoneCC, phone } = customerInfo;
 
-    const url = `${this.BASE_URL}/customers/modify.json?auth-userid=${this.userId}&api-key=${this.apiKey}&customer-id=${customerId}&username=${username}&name=${name}&company=${company}&lang-pref=${langPref}&address-line-1=${addressLine1}&city=${city}&state=${state}&country=${country}&zipcode=${zipcode}&phone-cc=${phoneCC}&phone=${phone}`;
+    const url = `${this.BASE_URL}modify.json?auth-userid=${this.userId}&api-key=${this.apiKey}&customer-id=${customerId}&username=${username}&name=${name}&company=${company}&lang-pref=${langPref}&address-line-1=${addressLine1}&city=${city}&state=${state}&country=${country}&zipcode=${zipcode}&phone-cc=${phoneCC}&phone=${phone}`;
 
     try {
-      const response = await axios.get(url);
+      const response = await axios.post(url);
       return response.data;
     } catch (error) {
       throw new Error('Error modifying customer: ' + error.message);
@@ -36,16 +38,16 @@ class Customer {
   }
 
   async changePasswordCustomer(customerId, newPassword) {
-    const url = `${this.BASE_URL}/customers/change-password.json?auth-userid=${this.userId}&api-key=${this.apiKey}&customer-id=${customerId}&new-passwd=${newPassword}`;
+    const url = `${this.BASE_URL}change-password.json?auth-userid=${this.userId}&api-key=${this.apiKey}&customer-id=${customerId}&new-passwd=${newPassword}`;
     try {
-      const response = await axios.get(url);
+      const response = await axios.post(url);
       return response.data;
     } catch (error) {
       throw new Error('Error changing password: ' + error.message);
     }
   }
   async generateTokenCustomer(username, password, ip) {
-    const url = `${this.BASE_URL}/customers/generate-token.json?auth-userid=${this.userId}&api-key=${this.apiKey}&username=${username}&passwd=${password}&ip=${ip}`;
+    const url = `${this.BASE_URL}generate-token.json?auth-userid=${this.userId}&api-key=${this.apiKey}&username=${username}&passwd=${password}&ip=${ip}`;
 
     try {
       const response = await axios.get(url);
@@ -55,7 +57,7 @@ class Customer {
     }
   }
   async authenticateTokenCustomer(token) {
-    const url = `${this.BASE_URL}/customers/authenticate-token.json?auth-userid=${this.userId}&api-key=${this.apiKey}&token=${token}`;
+    const url = `${this.BASE_URL}authenticate-token.json?auth-userid=${this.userId}&api-key=${this.apiKey}&token=${token}`;
 
     try {
       const response = await axios.get(url);
@@ -65,7 +67,7 @@ class Customer {
     }
   }
   async getCustomerDetails(username) {
-    const url = `${this.BASE_URL}/customers/details.json?auth-userid=${this.userId}&api-key=${this.apiKey}&username=${username}`;
+    const url = `${this.BASE_URL}details.json?auth-userid=${this.userId}&api-key=${this.apiKey}&username=${username}`;
 
     try {
       const response = await axios.get(url);
@@ -75,17 +77,17 @@ class Customer {
     }
   }
   async deleteCustomer(customerId) {
-    const url = `${this.BASE_URL}/customers/delete.json?auth-userid=${this.userId}&api-key=${this.apiKey}&customer-id=${customerId}`;
+    const url = `${this.BASE_URL}delete.json?auth-userid=${this.userId}&api-key=${this.apiKey}&customer-id=${customerId}`;
 
     try {
-      const response = await axios.get(url);
+      const response = await axios.post(url);
       return response.data;
     } catch (error) {
       throw new Error('Error deleting customer: ' + error.message);
     }
   }
   async getCustomerDetailsById(customerId) {
-    const url = `${this.BASE_URL}/customers/details-by-id.json?auth-userid=${this.userId}&api-key=${this.apiKey}&customer-id=${customerId}`;
+    const url = `${this.BASE_URL}details-by-id.json?auth-userid=${this.userId}&api-key=${this.apiKey}&customer-id=${customerId}`;
 
     try {
       const response = await axios.get(url);
@@ -95,7 +97,7 @@ class Customer {
     }
   }
   async searchCustomers(noOfRecords = 10, pageNo = 1) {
-    const url = `${this.BASE_URL}/customers/search.json?auth-userid=${this.userId}&api-key=${this.apiKey}&no-of-records=${noOfRecords}&page-no=${pageNo}`;
+    const url = `${this.BASE_URL}search.json?auth-userid=${this.userId}&api-key=${this.apiKey}&no-of-records=${noOfRecords}&page-no=${pageNo}`;
 
     try {
       const response = await axios.get(url);
@@ -105,7 +107,7 @@ class Customer {
     }
   }
   async authenticateTokenWithoutHistory(token) {
-    const url = `${this.BASE_URL}/customers/authenticate-token-without-history.json?auth-userid=${this.userId}&api-key=${this.apiKey}&token=${token}`;
+    const url = `${this.BASE_URL}authenticate-token-without-history.json?auth-userid=${this.userId}&api-key=${this.apiKey}&token=${token}`;
 
     try {
       const response = await axios.get(url);
@@ -115,17 +117,17 @@ class Customer {
     }
   }
   async forgotPassword(username) {
-    const url = `${this.BASE_URL}/customers/forgot-password.xml?auth-userid=${this.userId}&api-key=${this.apiKey}&username=${username}`;
+    const url = `${this.BASE_URL}forgot-password.xml?auth-userid=${this.userId}&api-key=${this.apiKey}&username=${username}`;
 
     try {
-      const response = await axios.get(url);
+      const response = await axios.post(url);
       return response.data;
     } catch (error) {
       throw new Error('Error requesting password reset: ' + error.message);
     }
   }
   async authenticate(username, password) {
-    const url = `${this.BASE_URL}/customers/authenticate.json?auth-userid=${this.userId}&api-key=${this.apiKey}&username=${username}&passwd=${password}`;
+    const url = `${this.BASE_URL}authenticate.json?auth-userid=${this.userId}&api-key=${this.apiKey}&username=${username}&passwd=${password}`;
 
     try {
       const response = await axios.get(url);
@@ -135,7 +137,7 @@ class Customer {
     }
   }
   async generateOTP(customerId) {
-    const url = `${this.BASE_URL}/customers/authenticate/generate-otp.json?auth-userid=${this.userId}&api-key=${this.apiKey}&customerid=${customerId}`;
+    const url = `${this.BASE_URL}authenticate/generate-otp.json?auth-userid=${this.userId}&api-key=${this.apiKey}&customerid=${customerId}`;
 
     try {
       const response = await axios.get(url);
@@ -145,7 +147,7 @@ class Customer {
     }
   }
   async verifyOTP(customerId, otp) {
-    const url = `${this.BASE_URL}/customers/authenticate/verify-otp.json?auth-userid=${this.userId}&api-key=${this.apiKey}&customerid=${customerId}&otp=${otp}`;
+    const url = `${this.BASE_URL}authenticate/verify-otp.json?auth-userid=${this.userId}&api-key=${this.apiKey}&customerid=${customerId}&otp=${otp}`;
 
     try {
       const response = await axios.get(url);
@@ -165,27 +167,27 @@ class Customer {
     }
   }
   async suspendCustomer(customerId, reason) {
-    const url = `${this.BASE_URL}/customers/suspend.json?auth-userid=${this.userId}&api-key=${this.apiKey}&customer-id=${customerId}&reason=${reason}`;
+    const url = `${this.BASE_URL}suspend.json?auth-userid=${this.userId}&api-key=${this.apiKey}&customer-id=${customerId}&reason=${reason}`;
 
     try {
-      const response = await axios.get(url);
+      const response = await axios.post(url);
       return response.data;
     } catch (error) {
       throw new Error('Error suspending customer: ' + error.message);
     }
   }
   async unsuspendCustomer(customerId, reason) {
-    const url = `${this.BASE_URL}/customers/unsuspend.json?auth-userid=${this.userId}&api-key=${this.apiKey}&customer-id=${customerId}&reason=${reason}`;
+    const url = `${this.BASE_URL}unsuspend.json?auth-userid=${this.userId}&api-key=${this.apiKey}&customer-id=${customerId}&reason=${reason}`;
 
     try {
-      const response = await axios.get(url);
+      const response = await axios.post(url);
       return response.data;
     } catch (error) {
       throw new Error('Error unsuspending customer: ' + error.message);
     }
   }
 
-  
+
 }
 
-module.exports = {Customer};
+module.exports = { Customer };
