@@ -21,38 +21,25 @@ npm install domain-management-api
 
 Here is a sample usage of the library:
 
-const { buyDomain, checkDomainStatus, renewDomain, transferDomain, deleteDomain, listDomains } = require('reseller-club-lib');
+const ResellerClub = require('reseller-club-lib');
 
-(async () => {
-  try {
-    // Purchase a domain
-    const purchaseResult = await buyDomain('example.com', {
-      name: 'John Doe',
-      email: 'john.doe@example.com',
-      address: '123 Main St'
-    });
-    console.log(purchaseResult);
+const reseller = new ResellerClub(process.env.API_KEY_RESELLER_CLUB, process.env.AUTH_USER_ID);
 
-    // Check domain status
-    const domainStatus = await checkDomainStatus('example.com');
-    console.log(domainStatus);
+const customerInfo = {
+  username: 'email@email.com',
+  passwd: 'password9',
+  name: 'name',
+  company: 'company',
+  addressLine1: 'address-line-1',
+  city: 'city',
+  state: 'state',
+  country: 'US',
+  zipcode: '0000',
+  phoneCC: '0',
+  phone: '000000',
+  langPref: 'en'
+};
 
-    // Renew domain
-    const renewResult = await renewDomain('example.com');
-    console.log(renewResult);
-
-    // Transfer domain
-    const transferResult = await transferDomain('example.com', 'auth-code-here');
-    console.log(transferResult);
-
-    // Delete domain
-    const deleteResult = await deleteDomain('example.com');
-    console.log(deleteResult);
-
-    // List all domains
-    const domains = await listDomains();
-    console.log(domains);
-  } catch (error) {
-    console.error(error.message);
-  }
-})();
+reseller.signup(customerInfo)
+  .then(data => console.log(data))
+  .catch(err => console.error('Error: ', err));

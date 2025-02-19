@@ -1,85 +1,187 @@
 const axios = require('axios');
 
 class ResellerClub {
-  constructor(apiKey) {
+  constructor(apiKey, userId) {
     this.apiKey = apiKey || process.env.API_KEY_RESELLER_CLUB;
-    if (!this.apiKey) {
-      throw new Error('API Key is required. Set it in the constructor or in environment variables.');
+    this.userId = userId || process.env.AUTH_USER_ID;
+    if (!this.apiKey || !this.userId) {
+      throw new Error('API Key and User ID are required.');
     }
-    this.BASE_URL = 'https://api.resellerclub.com/v1';
+    this.BASE_URL = 'https://test.httpapi.com/api';
   }
 
-  async buyDomain(domainName, registrantInfo, years = 1) {
+  async signupCustomer(customerInfo) {
+    const { username, passwd, name, company, addressLine1, city, state, country, zipcode, phoneCC, phone, langPref } = customerInfo;
+
+    const url = `${this.BASE_URL}/customers/signup.xml?auth-userid=${this.userId}&api-key=${this.apiKey}&username=${username}&passwd=${passwd}&name=${name}&company=${company}&address-line-1=${addressLine1}&city=${city}&state=${state}&country=${country}&zipcode=${zipcode}&phone-cc=${phoneCC}&phone=${phone}&lang-pref=${langPref}`;
+
     try {
-      const response = await axios.post(`${this.BASE_URL}/purchase-domain`, {
-        domain: domainName,
-        registrant_info: registrantInfo,
-        years,
-        apiKey: this.apiKey
-      });
+      const response = await axios.get(url);
       return response.data;
     } catch (error) {
-      throw new Error('Error purchasing domain: ' + error.message);
+      throw new Error('Error during signup: ' + error.message);
     }
   }
+  async modifyCustomer(customerInfo) {
+    const { customerId, username, name, company, langPref, addressLine1, city, state, country, zipcode, phoneCC, phone } = customerInfo;
 
-  async checkDomainStatus(domainName) {
+    const url = `${this.BASE_URL}/customers/modify.json?auth-userid=${this.userId}&api-key=${this.apiKey}&customer-id=${customerId}&username=${username}&name=${name}&company=${company}&lang-pref=${langPref}&address-line-1=${addressLine1}&city=${city}&state=${state}&country=${country}&zipcode=${zipcode}&phone-cc=${phoneCC}&phone=${phone}`;
+
     try {
-      const response = await axios.get(`${this.BASE_URL}/domain-status`, {
-        params: { domain: domainName, apiKey: this.apiKey }
-      });
+      const response = await axios.get(url);
       return response.data;
     } catch (error) {
-      throw new Error('Error checking domain status: ' + error.message);
-    }
-  }
-
-  async renewDomain(domainName, years = 1) {
-    try {
-      const response = await axios.post(`${this.BASE_URL}/renew-domain`, {
-        domain: domainName,
-        years,
-        apiKey: this.apiKey
-      });
-      return response.data;
-    } catch (error) {
-      throw new Error('Error renewing domain: ' + error.message);
+      throw new Error('Error modifying customer: ' + error.message);
     }
   }
 
-  async transferDomain(domainName, authCode) {
+  async changePasswordCustomer(customerId, newPassword) {
+    const url = `${this.BASE_URL}/customers/change-password.json?auth-userid=${this.userId}&api-key=${this.apiKey}&customer-id=${customerId}&new-passwd=${newPassword}`;
     try {
-      const response = await axios.post(`${this.BASE_URL}/transfer-domain`, {
-        domain: domainName,
-        authCode,
-        apiKey: this.apiKey
-      });
+      const response = await axios.get(url);
       return response.data;
     } catch (error) {
-      throw new Error('Error transferring domain: ' + error.message);
+      throw new Error('Error changing password: ' + error.message);
     }
   }
+  async generateTokenCustomer(username, password, ip) {
+    const url = `${this.BASE_URL}/customers/generate-token.json?auth-userid=${this.userId}&api-key=${this.apiKey}&username=${username}&passwd=${password}&ip=${ip}`;
 
-  async deleteDomain(domainName) {
     try {
-      const response = await axios.post(`${this.BASE_URL}/delete-domain`, {
-        domain: domainName,
-        apiKey: this.apiKey
-      });
+      const response = await axios.get(url);
       return response.data;
     } catch (error) {
-      throw new Error('Error deleting domain: ' + error.message);
+      throw new Error('Error generating token: ' + error.message);
     }
   }
+  async authenticateTokenCustomer(token) {
+    const url = `${this.BASE_URL}/customers/authenticate-token.json?auth-userid=${this.userId}&api-key=${this.apiKey}&token=${token}`;
 
-  async listDomains() {
     try {
-      const response = await axios.get(`${this.BASE_URL}/domain-list`, {
-        params: { apiKey: this.apiKey }
-      });
+      const response = await axios.get(url);
       return response.data;
     } catch (error) {
-      throw new Error('Error listing domains: ' + error.message);
+      throw new Error('Error authenticating token: ' + error.message);
+    }
+  }
+  async getCustomerDetails(username) {
+    const url = `${this.BASE_URL}/customers/details.json?auth-userid=${this.userId}&api-key=${this.apiKey}&username=${username}`;
+
+    try {
+      const response = await axios.get(url);
+      return response.data;
+    } catch (error) {
+      throw new Error('Error fetching customer details: ' + error.message);
+    }
+  }
+  async deleteCustomer(customerId) {
+    const url = `${this.BASE_URL}/customers/delete.json?auth-userid=${this.userId}&api-key=${this.apiKey}&customer-id=${customerId}`;
+
+    try {
+      const response = await axios.get(url);
+      return response.data;
+    } catch (error) {
+      throw new Error('Error deleting customer: ' + error.message);
+    }
+  }
+  async getCustomerDetailsById(customerId) {
+    const url = `${this.BASE_URL}/customers/details-by-id.json?auth-userid=${this.userId}&api-key=${this.apiKey}&customer-id=${customerId}`;
+
+    try {
+      const response = await axios.get(url);
+      return response.data;
+    } catch (error) {
+      throw new Error('Error fetching customer details: ' + error.message);
+    }
+  }
+  async searchCustomers(noOfRecords = 10, pageNo = 1) {
+    const url = `${this.BASE_URL}/customers/search.json?auth-userid=${this.userId}&api-key=${this.apiKey}&no-of-records=${noOfRecords}&page-no=${pageNo}`;
+
+    try {
+      const response = await axios.get(url);
+      return response.data;
+    } catch (error) {
+      throw new Error('Error searching customers: ' + error.message);
+    }
+  }
+  async authenticateTokenWithoutHistory(token) {
+    const url = `${this.BASE_URL}/customers/authenticate-token-without-history.json?auth-userid=${this.userId}&api-key=${this.apiKey}&token=${token}`;
+
+    try {
+      const response = await axios.get(url);
+      return response.data;
+    } catch (error) {
+      throw new Error('Error authenticating token without history: ' + error.message);
+    }
+  }
+  async forgotPassword(username) {
+    const url = `${this.BASE_URL}/customers/forgot-password.xml?auth-userid=${this.userId}&api-key=${this.apiKey}&username=${username}`;
+
+    try {
+      const response = await axios.get(url);
+      return response.data;
+    } catch (error) {
+      throw new Error('Error requesting password reset: ' + error.message);
+    }
+  }
+  async authenticate(username, password) {
+    const url = `${this.BASE_URL}/customers/authenticate.json?auth-userid=${this.userId}&api-key=${this.apiKey}&username=${username}&passwd=${password}`;
+
+    try {
+      const response = await axios.get(url);
+      return response.data;
+    } catch (error) {
+      throw new Error('Error authenticating user: ' + error.message);
+    }
+  }
+  async generateOTP(customerId) {
+    const url = `${this.BASE_URL}/customers/authenticate/generate-otp.json?auth-userid=${this.userId}&api-key=${this.apiKey}&customerid=${customerId}`;
+
+    try {
+      const response = await axios.get(url);
+      return response.data;
+    } catch (error) {
+      throw new Error('Error generating OTP: ' + error.message);
+    }
+  }
+  async verifyOTP(customerId, otp) {
+    const url = `${this.BASE_URL}/customers/authenticate/verify-otp.json?auth-userid=${this.userId}&api-key=${this.apiKey}&customerid=${customerId}&otp=${otp}`;
+
+    try {
+      const response = await axios.get(url);
+      return response.data;
+    } catch (error) {
+      throw new Error('Error verifying OTP: ' + error.message);
+    }
+  }
+  async autoLogin(role = 'customer') {
+    const url = `${this.BASE_URL}/AutoLoginServlet?userLoginId=${this.userLoginId}&role=${role}`;
+
+    try {
+      const response = await axios.get(url);
+      return response.data;
+    } catch (error) {
+      throw new Error('Error during AutoLogin: ' + error.message);
+    }
+  }
+  async suspendCustomer(customerId, reason) {
+    const url = `${this.BASE_URL}/customers/suspend.json?auth-userid=${this.userId}&api-key=${this.apiKey}&customer-id=${customerId}&reason=${reason}`;
+
+    try {
+      const response = await axios.get(url);
+      return response.data;
+    } catch (error) {
+      throw new Error('Error suspending customer: ' + error.message);
+    }
+  }
+  async unsuspendCustomer(customerId, reason) {
+    const url = `${this.BASE_URL}/customers/unsuspend.json?auth-userid=${this.userId}&api-key=${this.apiKey}&customer-id=${customerId}&reason=${reason}`;
+
+    try {
+      const response = await axios.get(url);
+      return response.data;
+    } catch (error) {
+      throw new Error('Error unsuspending customer: ' + error.message);
     }
   }
 }

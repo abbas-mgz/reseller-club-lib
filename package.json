@@ -1,6 +1,6 @@
 {
   "name": "reseller-club-lib",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "A Node.js library for interacting with the Reseller Club API, enabling easy domain management and account operations.",
   "main": "dist/index.js",
   "scripts": {
