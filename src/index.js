@@ -1,81 +1,87 @@
 const axios = require('axios');
-require('dotenv').config(); 
 
-const buyDomain = async (domainName, registrantInfo, years = 1) => {
-  try {
-    const response = await axios.post('https://api.resellerclub.com/v1/purchase-domain', {
-      domain: domainName,
-      registrant_info: registrantInfo,
-      years: years,
-      apiKey: process.env.API_KEY_RESSELER_CLUB
-    });
-    return response.data; 
-  } catch (error) {
-    throw new Error('Error purchasing domain: ' + error.message);
+class ResellerClub {
+  constructor(apiKey) {
+    this.apiKey = apiKey || process.env.API_KEY_RESELLER_CLUB;
+    if (!this.apiKey) {
+      throw new Error('API Key is required. Set it in the constructor or in environment variables.');
+    }
+    this.BASE_URL = 'https://api.resellerclub.com/v1';
   }
-};
 
-const checkDomainStatus = async (domainName) => {
-  try {
-    const response = await axios.get(`https://api.resellerclub.com/v1/domain-status?domain=${domainName}&apiKey=${process.env.API_KEY_RESSELER_CLUB}`);
-    return response.data;
-  } catch (error) {
-    throw new Error('Error checking domain status: ' + error.message);
+  async buyDomain(domainName, registrantInfo, years = 1) {
+    try {
+      const response = await axios.post(`${this.BASE_URL}/purchase-domain`, {
+        domain: domainName,
+        registrant_info: registrantInfo,
+        years,
+        apiKey: this.apiKey
+      });
+      return response.data;
+    } catch (error) {
+      throw new Error('Error purchasing domain: ' + error.message);
+    }
   }
-};
 
-const renewDomain = async (domainName, years = 1) => {
-  try {
-    const response = await axios.post('https://api.resellerclub.com/v1/renew-domain', {
-      domain: domainName,
-      years: years,
-      apiKey: process.env.API_KEY_RESSELER_CLUB
-    });
-    return response.data;
-  } catch (error) {
-    throw new Error('Error renewing domain: ' + error.message);
+  async checkDomainStatus(domainName) {
+    try {
+      const response = await axios.get(`${this.BASE_URL}/domain-status`, {
+        params: { domain: domainName, apiKey: this.apiKey }
+      });
+      return response.data;
+    } catch (error) {
+      throw new Error('Error checking domain status: ' + error.message);
+    }
   }
-};
 
-const transferDomain = async (domainName, authCode) => {
-  try {
-    const response = await axios.post('https://api.resellerclub.com/v1/transfer-domain', {
-      domain: domainName,
-      authCode: authCode,
-      apiKey: process.env.API_KEY_RESSELER_CLUB
-    });
-    return response.data;
-  } catch (error) {
-    throw new Error('Error transferring domain: ' + error.message);
+  async renewDomain(domainName, years = 1) {
+    try {
+      const response = await axios.post(`${this.BASE_URL}/renew-domain`, {
+        domain: domainName,
+        years,
+        apiKey: this.apiKey
+      });
+      return response.data;
+    } catch (error) {
+      throw new Error('Error renewing domain: ' + error.message);
+    }
   }
-};
 
-const deleteDomain = async (domainName) => {
-  try {
-    const response = await axios.post('https://api.resellerclub.com/v1/delete-domain', {
-      domain: domainName,
-      apiKey: process.env.API_KEY_RESSELER_CLUB
-    });
-    return response.data;
-  } catch (error) {
-    throw new Error('Error deleting domain: ' + error.message);
+  async transferDomain(domainName, authCode) {
+    try {
+      const response = await axios.post(`${this.BASE_URL}/transfer-domain`, {
+        domain: domainName,
+        authCode,
+        apiKey: this.apiKey
+      });
+      return response.data;
+    } catch (error) {
+      throw new Error('Error transferring domain: ' + error.message);
+    }
   }
-};
 
-const listDomains = async () => {
-  try {
-    const response = await axios.get(`https://api.resellerclub.com/v1/domain-list?apiKey=${process.env.API_KEY_RESSELER_CLUB}`);
-    return response.data;
-  } catch (error) {
-    throw new Error('Error listing domains: ' + error.message);
+  async deleteDomain(domainName) {
+    try {
+      const response = await axios.post(`${this.BASE_URL}/delete-domain`, {
+        domain: domainName,
+        apiKey: this.apiKey
+      });
+      return response.data;
+    } catch (error) {
+      throw new Error('Error deleting domain: ' + error.message);
+    }
   }
-};
 
-module.exports = {
-  buyDomain,
-  checkDomainStatus,
-  renewDomain,
-  transferDomain,
-  deleteDomain,
-  listDomains
-};
+  async listDomains() {
+    try {
+      const response = await axios.get(`${this.BASE_URL}/domain-list`, {
+        params: { apiKey: this.apiKey }
+      });
+      return response.data;
+    } catch (error) {
+      throw new Error('Error listing domains: ' + error.message);
+    }
+  }
+}
+
+module.exports = ResellerClub;
