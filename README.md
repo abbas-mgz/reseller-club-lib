@@ -69,6 +69,6 @@ For sending data and making API requests, please refer to the official ResellerC
 If you find this project useful and would like to support my work, you can do so via the link below:
 
 <a href="https://www.buymeacoffee.com/abbasmarghaei" target="_blank">
-    <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 100px !important;" >
+    <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 180px !important;" >
 </a>
 
