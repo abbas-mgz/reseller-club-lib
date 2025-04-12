@@ -252,8 +252,8 @@ class Domain {
       throw new Error('Error fetching domain order details: ' + error.message);
     }
   }
-  async searchDomains(noOfRecords = 10, pageNo = 1) {
-    const url = `${this.BASE_URL}search.json?auth-userid=${this.userId}&api-key=${this.apiKey}&no-of-records=${noOfRecords}&page-no=${pageNo}`;
+  async searchDomains(noOfRecords = 10, pageNo = 1, customerId) {
+    const url = `${this.BASE_URL}search.json?auth-userid=${this.userId}&api-key=${this.apiKey}&no-of-records=${noOfRecords}&page-no=${pageNo}&customer-id=${customerId}`;
 
     try {
       const response = await axios.get(url);
@@ -448,9 +448,8 @@ class Domain {
     }
   }
   // Suggest domain names based on a keyword
-  async suggestDomainNames(keyword) {
-    const url = `${this.BASE_URL}suggest-names.json?auth-userid=${this.userId}&api-key=${this.apiKey}&keyword=${keyword}`;
-
+  async suggestDomainNames(keyword, exactMatch) {
+    const url = `${this.BASE_URL}v5/suggest-names.json?auth-userid=${this.userId}&api-key=${this.apiKey}&keyword=${keyword}&exact-match=${exactMatch}`;
     try {
       const response = await axios.get(url);
       return response.data;
