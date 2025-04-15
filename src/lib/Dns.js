@@ -20,9 +20,12 @@ class Dns {
             throw new Error('Error adding TXT record: ' + error.message);
         }
     }
-    async addTxtRecord(domain, value, host) {
-        const url = `${this.BASE_URL}add-txt-record.json?auth-userid=${this.userId}&api-key=${this.apiKey}&domain-name=${domain}&value=${value}&host=${host}`;
+    async addTxtRecord(domain, value, host = null) {
+        let url = `${this.BASE_URL}add-txt-record.json?auth-userid=${this.userId}&api-key=${this.apiKey}&domain-name=${domain}&value=${value}`;
 
+        if(host)
+            url += `&host=${host}`;
+        
         try {
             const response = await axios.post(url);
             return response.data;
