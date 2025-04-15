@@ -1,6 +1,6 @@
 {
   "name": "reseller-club-lib",
-  "version": "1.1.6",
+  "version": "1.1.8",
   "description": "A Node.js library for interacting with the Reseller Club API, enabling easy domain management and account operations.",
   "main": "dist/index.js",
   "scripts": {
@@ -23,7 +23,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:abbas-mgz/reseller-club-lib.git"
+    "url": "git+ssh://git@github.com/abbas-mgz/reseller-club-lib.git"
   },
   "license": "MIT",
   "keywords": [
@@ -33,5 +33,9 @@
     "nodejs",
     "library"
   ],
-  "author": "Abbas Marghaei"
+  "author": "Abbas Marghaei",
+  "bugs": {
+    "url": "https://github.com/abbas-mgz/reseller-club-lib/issues"
+  },
+  "homepage": "https://github.com/abbas-mgz/reseller-club-lib#readme"
 }
