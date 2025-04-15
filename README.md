@@ -8,8 +8,8 @@ Before using the API, configure it with your credentials:
 
 ```javascript
 resellerClub.setConfig({
-    apiKey: 'mKEOHY9TXV0fwgxoCb46yLUjPa7KsO1n',
-    userId: '1276883',
+    apiKey: '',
+    userId: '',
     baseUrl: 'https://test.httpapi.com/api' // Ensure it's correctly set
 });
 ```
