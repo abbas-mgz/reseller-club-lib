@@ -813,6 +813,7 @@ var Domain = /*#__PURE__*/function () {
       var _searchDomains = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee22() {
         var noOfRecords,
           pageNo,
+          customerId,
           url,
           response,
           _args22 = arguments;
@@ -821,22 +822,23 @@ var Domain = /*#__PURE__*/function () {
             case 0:
               noOfRecords = _args22.length > 0 && _args22[0] !== undefined ? _args22[0] : 10;
               pageNo = _args22.length > 1 && _args22[1] !== undefined ? _args22[1] : 1;
-              url = "".concat(this.BASE_URL, "search.json?auth-userid=").concat(this.userId, "&api-key=").concat(this.apiKey, "&no-of-records=").concat(noOfRecords, "&page-no=").concat(pageNo);
-              _context22.prev = 3;
-              _context22.next = 6;
+              customerId = _args22.length > 2 ? _args22[2] : undefined;
+              url = "".concat(this.BASE_URL, "search.json?auth-userid=").concat(this.userId, "&api-key=").concat(this.apiKey, "&no-of-records=").concat(noOfRecords, "&page-no=").concat(pageNo, "&customer-id=").concat(customerId);
+              _context22.prev = 4;
+              _context22.next = 7;
               return axios.get(url);
-            case 6:
+            case 7:
               response = _context22.sent;
               return _context22.abrupt("return", response.data);
-            case 10:
-              _context22.prev = 10;
-              _context22.t0 = _context22["catch"](3);
+            case 11:
+              _context22.prev = 11;
+              _context22.t0 = _context22["catch"](4);
               throw new Error('Error fetching domain registration orders: ' + _context22.t0.message);
-            case 13:
+            case 14:
             case "end":
               return _context22.stop();
           }
-        }, _callee22, this, [[3, 10]]);
+        }, _callee22, this, [[4, 11]]);
       }));
       function searchDomains() {
         return _searchDomains.apply(this, arguments);
@@ -1362,12 +1364,12 @@ var Domain = /*#__PURE__*/function () {
   }, {
     key: "suggestDomainNames",
     value: function () {
-      var _suggestDomainNames = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee40(keyword) {
+      var _suggestDomainNames = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee40(keyword, exactMatch) {
         var url, response;
         return _regeneratorRuntime().wrap(function _callee40$(_context40) {
           while (1) switch (_context40.prev = _context40.next) {
             case 0:
-              url = "".concat(this.BASE_URL, "suggest-names.json?auth-userid=").concat(this.userId, "&api-key=").concat(this.apiKey, "&keyword=").concat(keyword);
+              url = "".concat(this.BASE_URL, "v5/suggest-names.json?auth-userid=").concat(this.userId, "&api-key=").concat(this.apiKey, "&keyword=").concat(keyword, "&exact-match=").concat(exactMatch);
               _context40.prev = 1;
               _context40.next = 4;
               return axios.get(url);
@@ -1384,7 +1386,7 @@ var Domain = /*#__PURE__*/function () {
           }
         }, _callee40, this, [[1, 8]]);
       }));
-      function suggestDomainNames(_x158) {
+      function suggestDomainNames(_x158, _x159) {
         return _suggestDomainNames.apply(this, arguments);
       }
       return suggestDomainNames;
@@ -1414,7 +1416,7 @@ var Domain = /*#__PURE__*/function () {
           }
         }, _callee41, this, [[1, 8]]);
       }));
-      function recheckNameServers(_x159) {
+      function recheckNameServers(_x160) {
         return _recheckNameServers.apply(this, arguments);
       }
       return recheckNameServers;
@@ -1444,7 +1446,7 @@ var Domain = /*#__PURE__*/function () {
           }
         }, _callee42, this, [[1, 8]]);
       }));
-      function validateTransfer(_x160) {
+      function validateTransfer(_x161) {
         return _validateTransfer.apply(this, arguments);
       }
       return validateTransfer;
@@ -1474,7 +1476,7 @@ var Domain = /*#__PURE__*/function () {
           }
         }, _callee43, this, [[1, 8]]);
       }));
-      function getAssociationDetails(_x161, _x162) {
+      function getAssociationDetails(_x162, _x163) {
         return _getAssociationDetails.apply(this, arguments);
       }
       return getAssociationDetails;
@@ -1514,7 +1516,7 @@ var Domain = /*#__PURE__*/function () {
           }
         }, _callee44, this, [[4, 11]]);
       }));
-      function checkIDNAvailability(_x163) {
+      function checkIDNAvailability(_x164) {
         return _checkIDNAvailability.apply(this, arguments);
       }
       return checkIDNAvailability;
@@ -1544,7 +1546,7 @@ var Domain = /*#__PURE__*/function () {
           }
         }, _callee45, this, [[1, 8]]);
       }));
-      function getDomainDetails(_x164) {
+      function getDomainDetails(_x165) {
         return _getDomainDetails.apply(this, arguments);
       }
       return getDomainDetails;
@@ -1574,7 +1576,7 @@ var Domain = /*#__PURE__*/function () {
           }
         }, _callee46, this, [[1, 8]]);
       }));
-      function addDsRc(_x165) {
+      function addDsRc(_x166) {
         return _addDsRc.apply(this, arguments);
       }
       return addDsRc;
@@ -1604,7 +1606,7 @@ var Domain = /*#__PURE__*/function () {
           }
         }, _callee47, this, [[1, 8]]);
       }));
-      function deleteDnssec(_x166, _x167, _x168, _x169, _x170) {
+      function deleteDnssec(_x167, _x168, _x169, _x170, _x171) {
         return _deleteDnssec.apply(this, arguments);
       }
       return deleteDnssec;
@@ -1646,7 +1648,7 @@ var Domain = /*#__PURE__*/function () {
           }
         }, _callee48, this, [[5, 12]]);
       }));
-      function checkPremiumDomains(_x171) {
+      function checkPremiumDomains(_x172) {
         return _checkPremiumDomains.apply(this, arguments);
       }
       return checkPremiumDomains;
@@ -1676,7 +1678,7 @@ var Domain = /*#__PURE__*/function () {
           }
         }, _callee49, this, [[1, 8]]);
       }));
-      function preOrderDomain(_x172, _x173) {
+      function preOrderDomain(_x173, _x174) {
         return _preOrderDomain.apply(this, arguments);
       }
       return preOrderDomain;
@@ -1706,7 +1708,7 @@ var Domain = /*#__PURE__*/function () {
           }
         }, _callee50, this, [[1, 8]]);
       }));
-      function deletePreorderedDomain(_x174, _x175) {
+      function deletePreorderedDomain(_x175, _x176) {
         return _deletePreorderedDomain.apply(this, arguments);
       }
       return deletePreorderedDomain;
@@ -1810,7 +1812,7 @@ var Domain = /*#__PURE__*/function () {
           }
         }, _callee53, this, [[2, 9]]);
       }));
-      function checkSunriseAvailability(_x176, _x177) {
+      function checkSunriseAvailability(_x177, _x178) {
         return _checkSunriseAvailability.apply(this, arguments);
       }
       return checkSunriseAvailability;
@@ -1840,7 +1842,7 @@ var Domain = /*#__PURE__*/function () {
           }
         }, _callee54, this, [[1, 8]]);
       }));
-      function getTrademarkNotice(_x178) {
+      function getTrademarkNotice(_x179) {
         return _getTrademarkNotice.apply(this, arguments);
       }
       return getTrademarkNotice;
@@ -1870,7 +1872,7 @@ var Domain = /*#__PURE__*/function () {
           }
         }, _callee55, this, [[1, 8]]);
       }));
-      function getTLDsInPhase(_x179) {
+      function getTLDsInPhase(_x180) {
         return _getTLDsInPhase.apply(this, arguments);
       }
       return getTLDsInPhase;
@@ -1904,7 +1906,7 @@ var Domain = /*#__PURE__*/function () {
           }
         }, _callee56, this, [[2, 9]]);
       }));
-      function purchasePrivacy(_x180) {
+      function purchasePrivacy(_x181) {
         return _purchasePrivacy.apply(this, arguments);
       }
       return purchasePrivacy;
@@ -1934,7 +1936,7 @@ var Domain = /*#__PURE__*/function () {
           }
         }, _callee57, this, [[1, 8]]);
       }));
-      function checkDomainAvailabilityUK(_x181, _x182, _x183, _x184, _x185, _x186, _x187, _x188, _x189) {
+      function checkDomainAvailabilityUK(_x182, _x183, _x184, _x185, _x186, _x187, _x188, _x189, _x190) {
         return _checkDomainAvailabilityUK.apply(this, arguments);
       }
       return checkDomainAvailabilityUK;
@@ -1964,7 +1966,7 @@ var Domain = /*#__PURE__*/function () {
           }
         }, _callee58, this, [[1, 8]]);
       }));
-      function submitAuthCode(_x190, _x191) {
+      function submitAuthCode(_x191, _x192) {
         return _submitAuthCode.apply(this, arguments);
       }
       return submitAuthCode;
@@ -2026,7 +2028,7 @@ var Domain = /*#__PURE__*/function () {
           }
         }, _callee60, this, [[3, 10]]);
       }));
-      function checkThirdLevelDomainAvailability(_x192, _x193) {
+      function checkThirdLevelDomainAvailability(_x193, _x194) {
         return _checkThirdLevelDomainAvailability.apply(this, arguments);
       }
       return checkThirdLevelDomainAvailability;

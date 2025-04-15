@@ -156,14 +156,13 @@ class Customer {
       throw new Error('Error verifying OTP: ' + error.message);
     }
   }
-  async autoLogin(role = 'customer') {
-    const url = `${this.BASE_URL}/AutoLoginServlet?userLoginId=${this.userLoginId}&role=${role}`;
-
+  async generateLoginToken(customerId, ip) {
+    const url = `${this.BASE_URL}generate-login-token.json?auth-userid=${this.userId}&api-key=${this.apiKey}&customer-id=${customerId}&ip=${ip}`;
     try {
       const response = await axios.get(url);
       return response.data;
     } catch (error) {
-      throw new Error('Error during AutoLogin: ' + error.message);
+      throw new Error('Error generating login token: ' + error.message);
     }
   }
   async suspendCustomer(customerId, reason) {

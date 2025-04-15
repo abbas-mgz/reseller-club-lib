@@ -450,38 +450,34 @@ var Customer = /*#__PURE__*/function () {
       return verifyOTP;
     }()
   }, {
-    key: "autoLogin",
+    key: "generateLoginToken",
     value: function () {
-      var _autoLogin = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee15() {
-        var role,
-          url,
-          response,
-          _args15 = arguments;
+      var _generateLoginToken = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee15(customerId, ip) {
+        var url, response;
         return _regeneratorRuntime().wrap(function _callee15$(_context15) {
           while (1) switch (_context15.prev = _context15.next) {
             case 0:
-              role = _args15.length > 0 && _args15[0] !== undefined ? _args15[0] : 'customer';
-              url = "".concat(this.BASE_URL, "/AutoLoginServlet?userLoginId=").concat(this.userLoginId, "&role=").concat(role);
-              _context15.prev = 2;
-              _context15.next = 5;
+              url = "".concat(this.BASE_URL, "generate-login-token.json?auth-userid=").concat(this.userId, "&api-key=").concat(this.apiKey, "&customer-id=").concat(customerId, "&ip=").concat(ip);
+              _context15.prev = 1;
+              _context15.next = 4;
               return axios.get(url);
-            case 5:
+            case 4:
               response = _context15.sent;
               return _context15.abrupt("return", response.data);
-            case 9:
-              _context15.prev = 9;
-              _context15.t0 = _context15["catch"](2);
-              throw new Error('Error during AutoLogin: ' + _context15.t0.message);
-            case 12:
+            case 8:
+              _context15.prev = 8;
+              _context15.t0 = _context15["catch"](1);
+              throw new Error('Error generating login token: ' + _context15.t0.message);
+            case 11:
             case "end":
               return _context15.stop();
           }
-        }, _callee15, this, [[2, 9]]);
+        }, _callee15, this, [[1, 8]]);
       }));
-      function autoLogin() {
-        return _autoLogin.apply(this, arguments);
+      function generateLoginToken(_x19, _x20) {
+        return _generateLoginToken.apply(this, arguments);
       }
-      return autoLogin;
+      return generateLoginToken;
     }()
   }, {
     key: "suspendCustomer",
@@ -508,7 +504,7 @@ var Customer = /*#__PURE__*/function () {
           }
         }, _callee16, this, [[1, 8]]);
       }));
-      function suspendCustomer(_x19, _x20) {
+      function suspendCustomer(_x21, _x22) {
         return _suspendCustomer.apply(this, arguments);
       }
       return suspendCustomer;
@@ -538,7 +534,7 @@ var Customer = /*#__PURE__*/function () {
           }
         }, _callee17, this, [[1, 8]]);
       }));
-      function unsuspendCustomer(_x21, _x22) {
+      function unsuspendCustomer(_x23, _x24) {
         return _unsuspendCustomer.apply(this, arguments);
       }
       return unsuspendCustomer;
