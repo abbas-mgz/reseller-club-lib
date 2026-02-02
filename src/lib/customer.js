@@ -13,9 +13,9 @@ class Customer {
   }
 
   async signupCustomer(customerInfo) {
-    const { username, passwd, name, company, addressLine1, city, state, country, zipcode, phoneCC, phone, langPref } = customerInfo;
+    const { username, passwd, name, company, addressLine1, city, state, country, zipcode, phoneCC, phone, langPref, vatId } = customerInfo;
 
-    const url = `${this.BASE_URL}signup.json?auth-userid=${this.userId}&api-key=${this.apiKey}&username=${username}&passwd=${passwd}&name=${name}&company=${company}&address-line-1=${addressLine1}&city=${city}&state=${state}&country=${country}&zipcode=${zipcode}&phone-cc=${phoneCC}&phone=${phone}&lang-pref=${langPref}`;
+    const url = `${this.BASE_URL}signup.json?auth-userid=${this.userId}&api-key=${this.apiKey}&username=${username}&vat-id=${vatId}&passwd=${passwd}&name=${name}&company=${company}&address-line-1=${addressLine1}&city=${city}&state=${state}&country=${country}&zipcode=${zipcode}&phone-cc=${phoneCC}&phone=${phone}&lang-pref=${langPref}`;
 
     try {
       const response = await axios.post(url);

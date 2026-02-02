@@ -3,7 +3,9 @@ import { Domain } from './lib/domain';
 import { Products } from './lib/pricing';
 import { Common } from './lib/common';
 import { Dns } from './lib/Dns';
+import { Contact } from './lib/contact';
 const resellerClub = {
+  Contact,
   Customer,
   Domain,
   Products,

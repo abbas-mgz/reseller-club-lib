@@ -25,12 +25,12 @@ var Customer = /*#__PURE__*/function () {
     key: "signupCustomer",
     value: function () {
       var _signupCustomer = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee(customerInfo) {
-        var username, passwd, name, company, addressLine1, city, state, country, zipcode, phoneCC, phone, langPref, url, response;
+        var username, passwd, name, company, addressLine1, city, state, country, zipcode, phoneCC, phone, langPref, vatId, url, response;
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
             case 0:
-              username = customerInfo.username, passwd = customerInfo.passwd, name = customerInfo.name, company = customerInfo.company, addressLine1 = customerInfo.addressLine1, city = customerInfo.city, state = customerInfo.state, country = customerInfo.country, zipcode = customerInfo.zipcode, phoneCC = customerInfo.phoneCC, phone = customerInfo.phone, langPref = customerInfo.langPref;
-              url = "".concat(this.BASE_URL, "signup.json?auth-userid=").concat(this.userId, "&api-key=").concat(this.apiKey, "&username=").concat(username, "&passwd=").concat(passwd, "&name=").concat(name, "&company=").concat(company, "&address-line-1=").concat(addressLine1, "&city=").concat(city, "&state=").concat(state, "&country=").concat(country, "&zipcode=").concat(zipcode, "&phone-cc=").concat(phoneCC, "&phone=").concat(phone, "&lang-pref=").concat(langPref);
+              username = customerInfo.username, passwd = customerInfo.passwd, name = customerInfo.name, company = customerInfo.company, addressLine1 = customerInfo.addressLine1, city = customerInfo.city, state = customerInfo.state, country = customerInfo.country, zipcode = customerInfo.zipcode, phoneCC = customerInfo.phoneCC, phone = customerInfo.phone, langPref = customerInfo.langPref, vatId = customerInfo.vatId;
+              url = "".concat(this.BASE_URL, "signup.json?auth-userid=").concat(this.userId, "&api-key=").concat(this.apiKey, "&username=").concat(username, "&vat-id=").concat(vatId, "&passwd=").concat(passwd, "&name=").concat(name, "&company=").concat(company, "&address-line-1=").concat(addressLine1, "&city=").concat(city, "&state=").concat(state, "&country=").concat(country, "&zipcode=").concat(zipcode, "&phone-cc=").concat(phoneCC, "&phone=").concat(phone, "&lang-pref=").concat(langPref);
               _context.prev = 2;
               _context.next = 5;
               return axios.post(url);

@@ -5,7 +5,9 @@ var _domain = require("./lib/domain");
 var _pricing = require("./lib/pricing");
 var _common = require("./lib/common");
 var _Dns = require("./lib/Dns");
+var _contact = require("./lib/contact");
 var resellerClub = {
+  Contact: _contact.Contact,
   Customer: _customer.Customer,
   Domain: _domain.Domain,
   Products: _pricing.Products,
