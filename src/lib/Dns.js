@@ -66,15 +66,7 @@ class Dns {
       throw new Error(error.message);
     }
   }
-  async addIPv6Record(domain, ipAddress) {
-    const url = `${this.BASE_URL}add-ipv6-record.json?auth-userid=${this.userId}&api-key=${this.apiKey}&domain-name=${domain}&value=${ipAddress}`;
-    try {
-      const response = await axios.get(url);
-      return this._handleApiResponse("adding IPv6 record", response.data);
-    } catch (error) {
-      throw new Error(error.message);
-    }
-  }
+
   async addMxRecord(domain, value, options = {}) {
     let url = `${this.BASE_URL}add-mx-record.json?auth-userid=${this.userId}&api-key=${this.apiKey}&domain-name=${domain}&value=${value}`;
 
@@ -86,6 +78,30 @@ class Dns {
     try {
       const response = await axios.post(url);
       return this._handleApiResponse("adding MX record", response.data);
+    } catch (error) {
+      throw new Error(error.message);
+    }
+  }
+  async addNsRecord(domain, value, options = {}) {
+    let url = `${this.BASE_URL}add-ns-record.json?auth-userid=${this.userId}&api-key=${this.apiKey}&domain-name=${domain}&value=${value}`;
+
+    const { host, ttl } = options;
+    if (host) url += `&host=${host}`;
+    if (typeof ttl === "number") url += `&ttl=${ttl}`;
+
+    try {
+      const response = await axios.post(url);
+      return this._handleApiResponse("adding NS record", response.data);
+    } catch (error) {
+      throw new Error(error.message);
+    }
+  }
+  async deleteNsRecord(domain, value, host = '@') {
+    const url = `${this.BASE_URL}delete-ns-record.json?auth-userid=${this.userId}&api-key=${this.apiKey}&domain-name=${domain}&host=${host}&value=${value}`;
+
+    try {
+      const response = await axios.post(url);
+      return this._handleApiResponse("deleting NS record", response.data);
     } catch (error) {
       throw new Error(error.message);
     }

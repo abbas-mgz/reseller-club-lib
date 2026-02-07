@@ -135,102 +135,175 @@ var Dns = /*#__PURE__*/function () {
       return addIPv4Record;
     }()
   }, {
-    key: "addIPv6Record",
-    value: function () {
-      var _addIPv6Record = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee4(domain, ipAddress) {
-        var url, response;
-        return _regeneratorRuntime().wrap(function _callee4$(_context4) {
-          while (1) switch (_context4.prev = _context4.next) {
-            case 0:
-              url = "".concat(this.BASE_URL, "add-ipv6-record.json?auth-userid=").concat(this.userId, "&api-key=").concat(this.apiKey, "&domain-name=").concat(domain, "&value=").concat(ipAddress);
-              _context4.prev = 1;
-              _context4.next = 4;
-              return axios.get(url);
-            case 4:
-              response = _context4.sent;
-              return _context4.abrupt("return", this._handleApiResponse("adding IPv6 record", response.data));
-            case 8:
-              _context4.prev = 8;
-              _context4.t0 = _context4["catch"](1);
-              throw new Error(_context4.t0.message);
-            case 11:
-            case "end":
-              return _context4.stop();
-          }
-        }, _callee4, this, [[1, 8]]);
-      }));
-      function addIPv6Record(_x8, _x9) {
-        return _addIPv6Record.apply(this, arguments);
-      }
-      return addIPv6Record;
-    }()
-  }, {
     key: "addMxRecord",
     value: function () {
-      var _addMxRecord = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee5(domain, value) {
+      var _addMxRecord = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee4(domain, value) {
         var options,
           url,
           host,
           ttl,
           priority,
           response,
-          _args5 = arguments;
-        return _regeneratorRuntime().wrap(function _callee5$(_context5) {
-          while (1) switch (_context5.prev = _context5.next) {
+          _args4 = arguments;
+        return _regeneratorRuntime().wrap(function _callee4$(_context4) {
+          while (1) switch (_context4.prev = _context4.next) {
             case 0:
-              options = _args5.length > 2 && _args5[2] !== undefined ? _args5[2] : {};
+              options = _args4.length > 2 && _args4[2] !== undefined ? _args4[2] : {};
               url = "".concat(this.BASE_URL, "add-mx-record.json?auth-userid=").concat(this.userId, "&api-key=").concat(this.apiKey, "&domain-name=").concat(domain, "&value=").concat(value);
               host = options.host, ttl = options.ttl, priority = options.priority;
               if (host) url += "&host=".concat(host);
               if (typeof ttl === "number") url += "&ttl=".concat(ttl);
               if (typeof priority === "number") url += "&priority=".concat(priority);
-              _context5.prev = 6;
-              _context5.next = 9;
+              _context4.prev = 6;
+              _context4.next = 9;
               return axios.post(url);
             case 9:
-              response = _context5.sent;
-              return _context5.abrupt("return", this._handleApiResponse("adding MX record", response.data));
+              response = _context4.sent;
+              return _context4.abrupt("return", this._handleApiResponse("adding MX record", response.data));
             case 13:
-              _context5.prev = 13;
-              _context5.t0 = _context5["catch"](6);
-              throw new Error(_context5.t0.message);
+              _context4.prev = 13;
+              _context4.t0 = _context4["catch"](6);
+              throw new Error(_context4.t0.message);
             case 16:
             case "end":
-              return _context5.stop();
+              return _context4.stop();
           }
-        }, _callee5, this, [[6, 13]]);
+        }, _callee4, this, [[6, 13]]);
       }));
-      function addMxRecord(_x10, _x11) {
+      function addMxRecord(_x8, _x9) {
         return _addMxRecord.apply(this, arguments);
       }
       return addMxRecord;
     }()
   }, {
-    key: "activateDNS",
+    key: "addNsRecord",
     value: function () {
-      var _activateDNS = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee6(orderId) {
-        var url, response;
+      var _addNsRecord = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee5(domain, value) {
+        var options,
+          url,
+          host,
+          ttl,
+          response,
+          _args5 = arguments;
+        return _regeneratorRuntime().wrap(function _callee5$(_context5) {
+          while (1) switch (_context5.prev = _context5.next) {
+            case 0:
+              options = _args5.length > 2 && _args5[2] !== undefined ? _args5[2] : {};
+              url = "".concat(this.BASE_URL, "add-ns-record.json?auth-userid=").concat(this.userId, "&api-key=").concat(this.apiKey, "&domain-name=").concat(domain, "&value=").concat(value);
+              host = options.host, ttl = options.ttl;
+              if (host) url += "&host=".concat(host);
+              if (typeof ttl === "number") url += "&ttl=".concat(ttl);
+              _context5.prev = 5;
+              _context5.next = 8;
+              return axios.post(url);
+            case 8:
+              response = _context5.sent;
+              return _context5.abrupt("return", this._handleApiResponse("adding NS record", response.data));
+            case 12:
+              _context5.prev = 12;
+              _context5.t0 = _context5["catch"](5);
+              throw new Error(_context5.t0.message);
+            case 15:
+            case "end":
+              return _context5.stop();
+          }
+        }, _callee5, this, [[5, 12]]);
+      }));
+      function addNsRecord(_x10, _x11) {
+        return _addNsRecord.apply(this, arguments);
+      }
+      return addNsRecord;
+    }()
+  }, {
+    key: "deleteNsRecord",
+    value: function () {
+      var _deleteNsRecord = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee6(domain, value) {
+        var host,
+          url,
+          response,
+          _args6 = arguments;
         return _regeneratorRuntime().wrap(function _callee6$(_context6) {
           while (1) switch (_context6.prev = _context6.next) {
             case 0:
-              url = "https://test.httpapi.com/api/dns/activate.json?auth-userid=".concat(this.userId, "&api-key=").concat(this.apiKey, "&order-id=").concat(orderId);
-              _context6.prev = 1;
-              _context6.next = 4;
-              return axios.get(url);
-            case 4:
+              host = _args6.length > 2 && _args6[2] !== undefined ? _args6[2] : '@';
+              url = "".concat(this.BASE_URL, "delete-ns-record.json?auth-userid=").concat(this.userId, "&api-key=").concat(this.apiKey, "&domain-name=").concat(domain, "&host=").concat(host, "&value=").concat(value);
+              _context6.prev = 2;
+              _context6.next = 5;
+              return axios.post(url);
+            case 5:
               response = _context6.sent;
-              return _context6.abrupt("return", this._handleApiResponse("activating DNS", response.data));
-            case 8:
-              _context6.prev = 8;
-              _context6.t0 = _context6["catch"](1);
+              return _context6.abrupt("return", this._handleApiResponse("deleting NS record", response.data));
+            case 9:
+              _context6.prev = 9;
+              _context6.t0 = _context6["catch"](2);
               throw new Error(_context6.t0.message);
-            case 11:
+            case 12:
             case "end":
               return _context6.stop();
           }
-        }, _callee6, this, [[1, 8]]);
+        }, _callee6, this, [[2, 9]]);
       }));
-      function activateDNS(_x12) {
+      function deleteNsRecord(_x12, _x13) {
+        return _deleteNsRecord.apply(this, arguments);
+      }
+      return deleteNsRecord;
+    }()
+  }, {
+    key: "addIPv6Record",
+    value: function () {
+      var _addIPv6Record = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee7(domain, ipAddress) {
+        var url, response;
+        return _regeneratorRuntime().wrap(function _callee7$(_context7) {
+          while (1) switch (_context7.prev = _context7.next) {
+            case 0:
+              url = "".concat(this.BASE_URL, "add-ipv6-record.json?auth-userid=").concat(this.userId, "&api-key=").concat(this.apiKey, "&domain-name=").concat(domain, "&value=").concat(ipAddress);
+              _context7.prev = 1;
+              _context7.next = 4;
+              return axios.get(url);
+            case 4:
+              response = _context7.sent;
+              return _context7.abrupt("return", this._handleApiResponse("adding IPv6 record", response.data));
+            case 8:
+              _context7.prev = 8;
+              _context7.t0 = _context7["catch"](1);
+              throw new Error(_context7.t0.message);
+            case 11:
+            case "end":
+              return _context7.stop();
+          }
+        }, _callee7, this, [[1, 8]]);
+      }));
+      function addIPv6Record(_x14, _x15) {
+        return _addIPv6Record.apply(this, arguments);
+      }
+      return addIPv6Record;
+    }()
+  }, {
+    key: "activateDNS",
+    value: function () {
+      var _activateDNS = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee8(orderId) {
+        var url, response;
+        return _regeneratorRuntime().wrap(function _callee8$(_context8) {
+          while (1) switch (_context8.prev = _context8.next) {
+            case 0:
+              url = "https://test.httpapi.com/api/dns/activate.json?auth-userid=".concat(this.userId, "&api-key=").concat(this.apiKey, "&order-id=").concat(orderId);
+              _context8.prev = 1;
+              _context8.next = 4;
+              return axios.get(url);
+            case 4:
+              response = _context8.sent;
+              return _context8.abrupt("return", this._handleApiResponse("activating DNS", response.data));
+            case 8:
+              _context8.prev = 8;
+              _context8.t0 = _context8["catch"](1);
+              throw new Error(_context8.t0.message);
+            case 11:
+            case "end":
+              return _context8.stop();
+          }
+        }, _callee8, this, [[1, 8]]);
+      }));
+      function activateDNS(_x16) {
         return _activateDNS.apply(this, arguments);
       }
       return activateDNS;
