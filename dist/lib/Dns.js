@@ -308,6 +308,45 @@ var Dns = /*#__PURE__*/function () {
       }
       return activateDNS;
     }()
+  }, {
+    key: "searchRecords",
+    value: function () {
+      var _searchRecords = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee9(domain, type) {
+        var options,
+          _options$numberOfReco,
+          numberOfRecords,
+          _options$pageNumber,
+          pageNumber,
+          url,
+          response,
+          _args9 = arguments;
+        return _regeneratorRuntime().wrap(function _callee9$(_context9) {
+          while (1) switch (_context9.prev = _context9.next) {
+            case 0:
+              options = _args9.length > 2 && _args9[2] !== undefined ? _args9[2] : {};
+              _options$numberOfReco = options.numberOfRecords, numberOfRecords = _options$numberOfReco === void 0 ? 10 : _options$numberOfReco, _options$pageNumber = options.pageNumber, pageNumber = _options$pageNumber === void 0 ? 1 : _options$pageNumber;
+              url = "".concat(this.BASE_URL, "search-records.json?auth-userid=").concat(this.userId, "&api-key=").concat(this.apiKey, "&domain-name=").concat(domain, "&type=").concat(type, "&no-of-records=").concat(numberOfRecords, "&page-no=").concat(pageNumber);
+              _context9.prev = 3;
+              _context9.next = 6;
+              return axios.get(url);
+            case 6:
+              response = _context9.sent;
+              return _context9.abrupt("return", this._handleApiResponse("searching DNS records", response.data));
+            case 10:
+              _context9.prev = 10;
+              _context9.t0 = _context9["catch"](3);
+              throw new Error(_context9.t0.message);
+            case 13:
+            case "end":
+              return _context9.stop();
+          }
+        }, _callee9, this, [[3, 10]]);
+      }));
+      function searchRecords(_x17, _x18) {
+        return _searchRecords.apply(this, arguments);
+      }
+      return searchRecords;
+    }()
   }]);
 }();
 module.exports = {

@@ -124,6 +124,17 @@ class Dns {
       throw new Error(error.message);
     }
   }
+  async searchRecords(domain, type, options = {}) {
+    const { numberOfRecords = 10, pageNumber = 1 } = options;
+    const url = `${this.BASE_URL}search-records.json?auth-userid=${this.userId}&api-key=${this.apiKey}&domain-name=${domain}&type=${type}&no-of-records=${numberOfRecords}&page-no=${pageNumber}`;
+    
+    try {
+      const response = await axios.get(url);
+      return this._handleApiResponse("searching DNS records", response.data);
+    } catch (error) {
+      throw new Error(error.message);
+    }
+  }
 }
 
 module.exports = { Dns };
